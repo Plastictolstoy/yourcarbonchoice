@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCarbonChoice</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">YourCarbonChoice</a></h1>
+    </header>
+    
+    <main>
+        <nav>
+            <a href="Transport.html"><button class="active">Transport <img src="images/transport.png" alt="Transport Icon"></button></a>
+            <a href="AirTravel.html"><button> Air Travel  <img src="images/airplane.png" alt="Air Travel Icon">
+    </button>
+</a></button></a>
+<a href="Heating & Cooling.html">
+    <button>
+        Heating &amp;<br>Cooling 
+        <img src="images/heating.png" alt="Heating Icon" class="heating-cooling-icon">
+    </button>
+</a>
+            <a href="Hot water.html"><button>Hot Water <img src="images/hotwater.png" alt="Hot Water Icon"></button></a>
+            <a href="Clothes_Dryer.html"><button>Clothes dryer</button></a>
+            <a href="Lighting.html"><button>Lighting  <img src="images/lighting.png" alt="Lighting Icon"></button></a>
+            <a href="Refrigerator.html"><button>Refrigerator</button></a>
+            <a href="Cooking.html"><button>Cooking</button></a>
+            <a href="Appliances.html"><button>Appliances</button></a>
+            <a href="Food & Shopping.html"><button>Food &amp;<br> Shopping <img src="images/foodshopping.png" alt="Food Shopping Icon" class="food-icon" ></button></a>
+            <a href="Waste.html"><button>Waste  <img src="images/waste.png" alt="Waste Icon"></button></a>      
+    </nav>
+        <section id="emission-display">
+            <div id="emission-info">
+                <div id="emission-header">
+                    <button class="addButton">+</button>
+                    <span class="module-title">Transport</span>
+                    <button id="infoButton">?</button>
+                </div>
+                <div class="green-line"></div>
+                <div class="ghg-display">
+                    <span>My household's GHG emissions:</span>
+                    <div class="ghg-bar my-ghg"></div>
+                </div>
+                <div class="ghg-display">
+                    <span>A typical household's GHG emissions:</span>
+                    <div class="ghg-bar typical-ghg"></div>
+                </div>
+                <div class="ghg-display">
+                    <span>A green household's GHG emissions:</span>
+                    <div class="ghg-bar green-ghg"></div>
+                </div>
+            </div>
+            <div class="ghg-total">
+                <div id="totalGHG" class="ghg-number">0.00</div>
+                <span class="ghg">Tonnes GHG</span>
+            </div>
+        </section>
+        <section id="calculator">
+            <div class="calculator-type">
+                <button onclick="toggleOption('cars')">Cars</button>
+                <button onclick="toggleOption('public')">Public Transport</button>
+            </div>
+            <div id="calculator-options">
+                <div class="module-info">
+                    <div class="module-type">Transport</div>
+                    <div class="module-details">
+                        <img src="images/transport.png" alt="Air Travel" style="width: 100px; height: 100px;">
+                        <div class="ghg-number-static">0.00t</div>
+                    </div>
+                </div>
+                <div>
+                    </br>
+                    </br>
+                    <div class="option-group cars">
+                        <label>What type of light do you have most of?</label>
+                        <select>
+                            <option>Light car</option>
+                            <option>Small car</option>
+                            <option>Medium car</option>
+                            <option>Large car</option>
+                            <option>Very large car</option>
+                            <option>People Mover</option>
+                            <option>Small 4WD</option>
+                            <option>Medium 4WD</option>
+                            <option>Large 4WD</option>
+                            <option>Van</option>
+                            <option>Utility (6 cyl)</option>
+                            <option>Utility (8 cyl)</option>
+                            <option>Light truck</option>
+                            <option>Motor scooter</option>
+                            <option>Motorcycle</option>
+                            <option>Electric bike</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group public hidden"> <!--Public Transport part-->
+                        <label>What type of public transport do you take most often?</label>
+                        <select>
+                            <option>Urban train (6 car)</option>
+                            <option>Double decker urban train (8 car)</option>
+                            <option>Under-ground urban train (4-6 car)</option>
+                            <option>Outer urban train (6 car)(up to 130km/h)</option>
+                            <option>Regional train (3 car)(up to 130km/h)</option>
+                            <option>High speed intercity train (130-200km/h)</option>
+                            <option>Very high speed train (200-300km/h)</option>
+                            <option>Suburban diesel train (2 car)</option>
+                            <option>Regional diesel train (2 car)(up to 150km/h)</option>
+                            <option>Interstate high speed diesel train (7 car)(130-200km/h)</option>
+                            <option>Old Melbourne tram</option>
+                            <option>Modern 64 seat tram</option>
+                            <option>Modern 94 seat light rail or tram</option>
+                            <option>Suburban bus</option>
+                            <option>Intercity bus</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calculator-buttons">
+                    <button>Quick</button>
+                    <button>Detail</button>
+                </div>
+            </div>
+        </section>
+        <div class="main-footer-buttons">
+            <button>Main Menu</button>
+            <button>Save</button>
+            <button>Personal</button>
+            <button>Report</button>
+        </div>
+    </main>
+    <script>
+        function toggleOption(option) {
+            var carsOptions = document.querySelector('.option-group.cars'); // cars 클래스를 가진 옵션 그룹 선택
+            var publicTransportOptions = document.querySelector('.option-group.public'); // public 클래스를 가진 옵션 그룹 선택
+
+            if (option === 'cars') {
+                carsOptions.classList.remove('hidden'); // hidden 클래스 제거
+                publicTransportOptions.classList.add('hidden'); // hidden 클래스 추가
+            } else if (option === 'public') {
+                carsOptions.classList.add('hidden'); // hidden 클래스 추가
+                publicTransportOptions.classList.remove('hidden'); // hidden 클래스 제거
+            }
+        }
+
+    </script>
+
+    <footer>
+        <p>YourCarbonChoice © 2024</p>
+    </footer>
+</body>
+
+</html>
