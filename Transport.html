@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCarbonChoice</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Calculator</title>
+    <style>
+        .tabcontent {
+            display: none; /* Initially hide all tab contents */
+        }
+        .active {
+            background-color: lightblue; /* Example styling for active tab */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">YourCarbonChoice</a></h1>
+    </header>
+<main> 
+        <!-- Navigation Section Start -->
+        <nav>
+            <a href="Transport.html"><button class="active">Transport <img src="images/transport.png" alt="Transport Icon"></button></a>
+            <a href="AirTravel.html"><button > Travel  <img src="images/airplane.png" alt="Air Travel Icon"> 
+                <div id="totalAirGHG" class="airTravel_2"></div></button></a>
+            <a href="Heating & Cooling.html"> <button>Heating &amp;<br>Cooling<img src="images/heating.png" alt="Heating Icon" class="heating-cooling-icon"></button></a>
+                <div id="totalHeatingCooling" class="heatingCooling_2"></div>
+            <a href="Hot water.html"><button>Hot Water <img src="images/hotwater.png" alt="Hot Water Icon"></button></a>
+                <div id="totalHotWater" class="hotwater_2"></div>
+            <a href="Clothes_Dryer.html"><button>Clothes dryer</button></a>
+                <div id="totalDryer" class="dryer_2"></div>
+            <a href="Lighting.html"><button>Lighting  <img src="images/lighting.png" alt="Lighting Icon"></button></a>
+            <a href="Refrigerator.html"><button>Refrigerator</button></a>
+            <a href="Cooking.html"><button>Cooking</button></a>
+            <a href="Appliances.html"><button>Appliances</button></a>
+            <a href="Food & Shopping.html"><button>Food &amp;<br> Shopping <img src="images/foodshopping.png" alt="Food Shopping Icon" class="food-icon" ></button></a>
+            <a href="Waste.html"><button>Waste  <img src="images/waste.png" alt="Waste Icon"></button></a>      
+    </nav>
+    <section id="emission-display">
+        <div id="emission-info">
+            <div id="emission-header">
+                <button class="addButton">+</button>
+                <span class="module-title">Transport</span>
+                <button id="infoButton" class="infoButton">?</button>
+                <div id="infoBox" class="infoBox">
+                    <h2>How to use the Calculator</h2>
+                    <p>Each calculator has two modes a quick and a detailed mode.
+                      Quick mode uses predefined calculations for your module. 
+                      While detailed mode allows you to define as much detail you would like for the calculations of the module.
+                      Please click on the quick and detailed buttons to change modes.
+                      
+                    </p>
+                    <button id="closeInfoBoxButton">Close</button>
+                </div>
+            </div>
+            <div class="green-line"></div>
+            <div class="ghg-display">
+                <span>My household's GHG emissions:</span>
+                <div class="ghg-bar my-ghg"></div>
+            </div>
+            <div class="ghg-display">
+                <span>A typical household's GHG emissions:</span>
+                <div class="ghg-bar typical-ghg"></div>
+            </div>
+            <div class="ghg-display">
+                <span>A green household's GHG emissions:</span>
+                <div class="ghg-bar green-ghg"></div>
+            </div>
+        </div>
+        <div class="ghg-total">
+            <div id="totalGHG" class="ghg-number">0.00</div> <!-- GHG 값 표시 부분 -->
+            <span class="ghg">Tonnes GHG</span> <!-- 단위 표시 -->
+        </div>
+    </section>
+    <section id="body">
+        <div id="body-options">
+            <div class="module-info">
+                <div class="module-type">Transport</div>
+                <div class="module-details">
+                    
+                    <img src="images/transport.png" alt="Air Travel" style="width: 100px; height: 100px;">
+                    <div class="ghg-number-static">0.00t</div>
+                </div>
+
+            </div>
+
+            <!-- Quick Section Content -->
+            <div id="QuickTabContent" class="tabcontent">
+                <p>OUTPUT:This is the Quick section.</p>
+                <div class="table-container">
+                    <div>
+                        INSERT CONTENT HERE
+                 
+                    </div>
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+                <p>OUTPUT:This is the Detailed section.</p>
+                <div class="table-container">
+                    <div class="mainTab"></div>
+                    Insert your VALUES INSIDE HERE
+                               
+
+                </div>
+            </div>
+            
+            <div class="body-buttons">
+                <button id="quickTabButton" class="tablinks quick">Quick</button>
+                <button id="detailedTabButton" class="tablinks detailed">Detailed</button>
+            </div>
+
+        </div>
+
+    </section>
+
+ 
+    
+    <div class="main-footer-buttons">
+        <button>Main Menu</button>
+        <button>Save</button>
+        <button>Personal</button>
+        <button>Report</button>
+    </div>
+</main>
+
+<script src="global.js"></script>
+</body>
+<footer>
+    <p>YourCarbonChoice © 2024</p>
+</footer> 
+
+</html>
