@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save Calculation</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Main Menu Styles */
+        .main-menu {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .main-menu h2 {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group input {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-left: 80px;
+            /* Add margin to the left */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 320px;
+            /* Adjusted width */
+            padding-left: 80px;
+            /* Add padding to the left */
+        }
+
+        .button-group button {
+            width: 48%;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .button-group button img {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 16px;
+            /* Adjusted width */
+            height: 16px;
+            /* Adjusted height */
+        }
+
         /* Save Success Modal Styles */
         .modal {
             display: none;
@@ -16,8 +78,8 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
         }
 
@@ -46,24 +108,25 @@
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Save Calculation</h1>
-    </header>
     <main>
         <div class="main-menu">
             <h2>Save your calculation file as:</h2>
             <p>(25 chars maximum)</p>
-            <input type="text" id="saveFileName" maxlength="25" placeholder="MyCalculationFile">
-            <div class="main-footer-buttons">
-                <button onclick="cancelSave()">Cancel</button>
-                <button onclick="saveFile()">Done</button>
+            <div class="input-group">
+                <input type="text" id="saveFileName" maxlength="25" placeholder="MyCalculationFile">
+            </div>
+            <div class="button-group">
+                <button onclick="cancelSave()">
+                    <img src="Assets/cancel-icon.png" alt="Cancel"> Cancel
+                </button>
+                <button onclick="saveFile()">
+                    <img src="Assets/done-icon.png" alt="Done"> Done
+                </button>
             </div>
         </div>
     </main>
-    <footer>
-        <p>YourCarbonChoice © 2024</p>
-    </footer>
 
     <!-- The Modal -->
     <div id="successModal" class="modal">
@@ -98,4 +161,5 @@
         }
     </script>
 </body>
+
 </html>

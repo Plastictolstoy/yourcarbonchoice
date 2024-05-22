@@ -63,7 +63,12 @@
         .input-group label {
             display: block;
             margin-bottom: 5px;
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .input-group small {
+            font-size: 14px;
         }
 
         .input-group input {
@@ -73,27 +78,39 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
+            margin-left: 80px;
+            /* Add margin to the left */
         }
 
         .input-group select {
-            width: 140px;
+            width: 200px;
             padding: 10px;
-            margin-right: 10px;
-            border: 2px solid #b5e7b5;
-            border-radius: 4px;
+            border: 1px solid #b5e7b5;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: bold;
+        }
+
+        .input-group .dropdown-wrapper {
+            display: flex;
+            gap: 20px;
+            /* Space between dropdowns */
+            margin-left: 80px;
+            /* Move the entire group of dropdowns to the right */
         }
 
         .button-group {
             display: flex;
             justify-content: space-between;
-            width: 300px;
+            width: 320px;
+            /* Adjusted width */
+            padding-left: 80px;
+            /* Add padding to the left */
         }
 
         .button-group button {
             width: 48%;
-            background-color: orange;
+            background-color: rgb(255, 153, 0);
             color: white;
             border: none;
             padding: 10px;
@@ -108,14 +125,30 @@
         .button-group button img {
             vertical-align: middle;
             margin-right: 5px;
+            width: 16px;
+            /* Adjusted width */
+            height: 16px;
+            /* Adjusted height */
+        }
+
+        p {
+            font-size: 12px;
+            /* Reduce paragraph font size */
+            width: 30%;
+            /* Ensures the paragraph doesn't extend beyond other elements */
+            line-height: 1.5;
+            margin-left: 80px;
+            /* Match the left margin of other elements */
+        }
+
+        .single-dropdown {
+            margin-left: 80px;
+            /* Move the single dropdown to the right */
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>YourCarbonChoice</h1>
-    </header>
     <main>
         <div class="main-menu">
             <!--<h2>Main Menu</h2>-->
@@ -137,12 +170,12 @@
             <div id="quick-detailed" class="sub-menu">
                 <!--<h2>Quick / Detailed</h2>-->
                 <div class="input-group">
-                    <label for="calc-file">Name your calculation file: <br> (25 chars maximum)</label>
+                    <label for="calc-file">Name your calculation file: <br> <small>(25 chars maximum)</small></label>
                     <input type="text" id="calc-file" placeholder="MyCalculationFile" maxlength="25">
                 </div>
                 <div class="input-group">
                     <label for="comp-files">Choose your comparison files:</label>
-                    <div style="display: flex; gap: 10px;">
+                    <div class="dropdown-wrapper">
                         <select id="comp-file1">
                             <option value="">VIC typical</option>
                             <!-- Options will be dynamically added -->
@@ -153,14 +186,15 @@
                         </select>
                     </div>
                 </div>
-                <p>As you proceed through this program, your calculation results are compared against two other files.
-                    These can be preset example files, or other saved calculations.</p>
+                <p>As you proceed through this program, your calculation results are
+                    compared against two other files. These can be preset example files,
+                    or other saved calculations.</p>
                 <div class="button-group">
                     <button onclick="showSubMenu('start-new')">
-                        <img src="cancel-icon.png" alt="Cancel"> Cancel
+                        <img src="Assets/cancel-icon.png" alt="Cancel"> Cancel
                     </button>
                     <button onclick="startCalculation()">
-                        <img src="done-icon.png" alt="Done"> Done
+                        <img src="Assets/done-icon.png" alt="Done"> Done
                     </button>
                 </div>
             </div>
@@ -168,7 +202,7 @@
                 <!--<h2>Load a saved calculation</h2>-->
                 <div class="input-group">
                     <label for="saved-calc">Choose your calculation file:</label>
-                    <select id="saved-calc">
+                    <select id="saved-calc" class="single-dropdown">
                         <!-- Options will be dynamically added -->
                     </select>
                 </div>
@@ -184,9 +218,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>YourCarbonChoice © 2024</p>
-    </footer>
     <script>
         function showSubMenu(id) {
             // Hide all sub menus
@@ -209,8 +240,8 @@
         }
 
         function startCalculation() {
-            // Redirect to Heating & Cooling module
-            window.location.href = 'Heating & Cooling.html';
+            // Redirect to AirTravel module
+            window.location.href = 'AirTravel.html';
         }
 
         function loadCalculation() {
