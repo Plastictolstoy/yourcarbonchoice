@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Main Menu Styles */
+        .main-menu {
+            width: 90%;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+        }
+
+        .main-menu h2 {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .button-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .button-container button.disabled {
+            background-color: #ddd;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .sub-menu {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .sub-menu.active {
+            display: block;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button-group button {
+            width: 48%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Main Menu</h1>
+    </header>
+    <main>
+        <div class="main-menu">
+            <h2>Main Menu</h2>
+            <div class="button-container main-buttons">
+                <button onclick="showSubMenu('start-new')">Start a new calculation</button>
+                <button>Load a saved calculation</button>
+                <button class="disabled">Reference section</button>
+                <button class="disabled">Other modules</button>
+            </div>
+            <div id="start-new" class="sub-menu">
+                <h2>Start a new calculation</h2>
+                <div class="button-container">
+                    <button class="disabled">Snapshot</button>
+                    <button onclick="showSubMenu('quick-detailed')">Quick</button>
+                    <button onclick="showSubMenu('quick-detailed')">Detailed</button>
+                    <button onclick="showMainMenu()">Main Menu</button>
+                </div>
+            </div>
+            <div id="quick-detailed" class="sub-menu">
+                <h2>Quick / Detailed</h2>
+                <div class="input-group">
+                    <label for="calc-file">Name your calculation file:</label>
+                    <input type="text" id="calc-file" placeholder="MyCalculationFile" maxlength="25">
+                </div>
+                <div class="input-group">
+                    <label for="comp-files">Choose your comparison files:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="comp-file1">
+                            <option value="">Select file 1</option>
+                            <!-- Options will be dynamically added -->
+                        </select>
+                        <select id="comp-file2">
+                            <option value="">Select file 2</option>
+                            <!-- Options will be dynamically added -->
+                        </select>
+                    </div>
+                </div>
+                <p>As you proceed through this program, your calculation results are compared against two other files.
+                    These can be preset example files, or other saved calculations.</p>
+                <div class="button-group">
+                    <button onclick="showSubMenu('start-new')">Cancel</button>
+                    <button onclick="startCalculation()">Done</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>YourCarbonChoice © 2024</p>
+    </footer>
+    <script>
+        function showSubMenu(id) {
+            // Hide all sub menus
+            document.querySelectorAll('.sub-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+            // Show the selected sub menu
+            document.getElementById(id).classList.add('active');
+            // Hide the main buttons
+            document.querySelector('.main-buttons').style.display = 'none';
+        }
+
+        function showMainMenu() {
+            // Hide all sub menus
+            document.querySelectorAll('.sub-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+            // Show the main buttons
+            document.querySelector('.main-buttons').style.display = 'flex';
+        }
+
+        function startCalculation() {
+            // Redirect to Heating & Cooling module
+            window.location.href = 'Heating & Cooling.html';
+        }
+    </script>
+</body>
+
+</html>
