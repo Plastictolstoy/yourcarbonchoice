@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,7 +91,7 @@
             <!--<h2>Main Menu</h2>-->
             <div class="button-container main-buttons">
                 <button onclick="showSubMenu('start-new')">Start a new calculation</button>
-                <button>Load a saved calculation</button>
+                <button onclick="showSubMenu('load-calculation')">Load a saved calculation</button>
                 <button class="disabled">Reference section</button>
                 <button class="disabled">Other modules</button>
             </div>
@@ -131,6 +130,20 @@
                     <button onclick="startCalculation()">Done</button>
                 </div>
             </div>
+            <div id="load-calculation" class="sub-menu">
+                <!--<h2>Load a saved calculation</h2>-->
+                <div class="input-group">
+                    <label for="saved-calc">Choose your calculation file:</label>
+                    <select id="saved-calc">
+                        <!-- Options will be dynamically added -->
+                    </select>
+                </div>
+                <p>More text as required about calculation files.</p>
+                <div class="button-group">
+                    <button onclick="showMainMenu()">Cancel</button>
+                    <button onclick="loadCalculation()">Done</button>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
@@ -161,7 +174,40 @@
             // Redirect to Heating & Cooling module
             window.location.href = 'Heating & Cooling.html';
         }
+
+        function loadCalculation() {
+            const selectedFile = document.getElementById('saved-calc').value;
+            if (selectedFile) {
+                // Load the selected file (Implement the logic as required)
+                console.log(`Loading file: ${selectedFile}`);
+                alert(`Loaded file: ${selectedFile}`);
+                showMainMenu();
+            } else {
+                alert('Please select a file to load.');
+            }
+        }
+
+        // Load saved files into dropdowns
+        function loadSavedFiles() {
+            const savedFiles = Object.keys(localStorage);
+            const savedCalcDropdown = document.getElementById('saved-calc');
+            const compFile1Dropdown = document.getElementById('comp-file1');
+            const compFile2Dropdown = document.getElementById('comp-file2');
+
+            savedFiles.forEach(file => {
+                const option1 = document.createElement('option');
+                option1.value = file;
+                option1.text = file;
+                savedCalcDropdown.add(option1);
+
+                const option2 = option1.cloneNode(true);
+                const option3 = option1.cloneNode(true);
+                compFile1Dropdown.add(option2);
+                compFile2Dropdown.add(option3);
+            });
+        }
+
+        window.onload = loadSavedFiles;
     </script>
 </body>
-
 </html>
