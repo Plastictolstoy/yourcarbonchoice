@@ -1,0 +1,336 @@
+/* General Reset */
+html, body {
+    height: 100%; /* 전체 높이 설정 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 요소 정렬 */
+}
+
+/* Header */
+header {
+    background-color: #FAEFE0BF;
+    color: #121212de;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Main Content Area */
+main {
+    /* flex: 1; main 섹션에 유연성 부여 */
+    background-color: #41635a40;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* overflow-y: auto; 내용이 많을 경우 스크롤 생성 */
+}
+
+/* Footer */
+footer {
+    background-color: #121212de;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    margin-top: auto; /* 자동으로 위 여백 생성 */
+    /*
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    nav button, .main-footer-buttons button {
+        padding: 8px;
+        font-size: 10px; /* 작은 화면에서 버튼 글꼴 크기 감소 */
+    }
+
+    .module-details img {
+        width: 80px; /* 작은 화면에서 이미지 크기 조정 */
+        height: 80px;
+    }
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-around;
+    /* 버튼 사이에 공간을 균등하게 분배 */
+    width: 91.6%;
+}
+
+nav a {
+    flex: 1 1 200px;
+    /* 각 링크가 사용 가능한 공간을 균등하게 차지 */
+    margin: 1px;
+    text-decoration: none;
+    /* 링크 밑줄 제거 */
+}
+
+nav button {
+    background-color: #BE9B9BCC;
+    color: #f0f0f0;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 1px;
+    width: 100%;
+    /* 버튼의 너비를 링크의 100%로 설정 */
+    height: 40px;
+    /* 모든 버튼의 높이를 50px로 설정 */
+    text-align: left;
+    /* 텍스트를 버튼 왼쪽으로 정렬 */
+    font-size: 12.2px;
+    /* 글씨 크기를 작게 조정 */
+    flex: 1 1 220px;
+    /* flex-basis를 200px에서 220px로 조정 */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); /* 박스 그림자 추가 */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 텍스트 그림자 추가 */
+
+}
+
+nav button.active,
+nav button:hover {
+    background-color: #2F7E2D80;
+}
+
+
+#emissions-display,
+#calculators {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Sections for Emissions and Calculator */
+#emission-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fbfdf9;
+    padding: 10px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2px 0;
+}
+
+/* Styling the left column that contains the emissions info */
+#emission-info {
+    flex-grow: 1;
+    /* Allow this section to take the remaining space */
+}
+
+#calculator {
+    position: relative;
+    background-color: #fbfdf9;
+    padding: 10px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    min-height: 300px;
+    /* 최소 높이 설정 */
+    flex-grow: 1;
+    /* 공간이 있을 때 늘어남 */
+}
+
+#emission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.module-title {
+    flex-grow: 1;
+    /* Allow the title to fill the space */
+    text-align: left;
+    /* left the title text */
+    font-size: 18px;
+    margin-left: 10px;
+    /* Add left margin to push it further left */
+}
+
+.addButton,
+#infoButton {
+    flex: 0 0 auto;
+    /* Prevent the buttons from growing */
+    width: 35px;
+    /* Set a fixed width for the buttons */
+    height: 20px;
+    /* Set a fixed height for the buttons */
+}
+
+.green-line {
+    height: 2px;
+    background-color: #4CAF50;
+    margin: 10px 0;
+}
+
+.gauge {
+    margin: 10px 0;
+}
+
+#calculator-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ghg-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.ghg-bar {
+    height: 10px;
+    background-color: #ccc;
+    flex: 3;
+    margin-left: 10px;
+}
+
+.my-ghg {
+    background-color: rgb(223, 137, 57);
+}
+
+.typical-ghg {
+    background-color: rgb(223, 137, 57);
+}
+
+.green-ghg {
+    background-color: rgb(223, 137, 57);
+}
+
+.module-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* 중앙 정렬 */
+    padding: 20px;
+    margin-bottom: 20px;
+    /* 하단 마진으로 간격 조정 */
+}
+
+.module-type {
+    margin-bottom: 20px;
+    /* 제목과 세부사항 사이의 간격 */
+    font-size: 20px;
+    /* 글씨 크기 조정 */
+    font-weight: bold;
+    /* 글씨 두께 조정 */
+}
+
+.module-details {
+    display: flex;
+    align-items: center;
+    /* 내부 아이템 수직 중앙 정렬 */
+    justify-content: center;
+    /* 내부 아이템 수평 중앙 정렬 */
+}
+
+.module-details img {
+    margin-right: 40px;
+    /* 이미지와 텍스트 사이 간격 */
+}
+
+
+.option-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 텍스트와 드롭박스 사이의 공간을 최대로 합니다. */
+    margin-top: 10px;
+    /* 각 옵션 그룹 위에 10px의 여백 추가 */
+    margin-bottom: 10px;
+    /* 각 옵션 그룹 아래에 10px의 여백 추가 */
+}
+
+.option-group select {
+    margin-left: 30px;
+}
+
+select {
+    width: auto;
+    /* Width of select is determined by its content 드박디자인 */
+    padding: 5px 7px;
+    border: 1px solid #ccc;
+    background-color: #e7e7e7;
+}
+
+.calculator-buttons {
+    float: right;
+}
+
+.main-footer-buttons {
+    align-self: stretch;
+    /* 가로 길이를 main의 너비와 같게 설정 */
+    display: flex;
+    justify-content: flex-start;
+    /* 버튼들을 왼쪽으로 정렬 */
+    padding: 10px 0;
+    /* 상단과 하단에 패딩 추가 */
+    width: 100%;
+    /* 버튼 그룹의 너비를 화면 전체로 설정 */
+}
+
+.main-footer-buttons button {
+    margin-right: 10px;
+    /* 오른쪽 마진으로 버튼 사이 간격 설정 */
+    background-color: #f1f1f1;
+    /* 버튼 배경색 설정 */
+    color: black;
+    /* 텍스트 색상을 검은색으로 설정 */
+    padding: 10px;
+    /* 패딩 설정 */
+    border: 1px solid black;
+    /* 검은색 테두리 설정 */
+    cursor: pointer;
+    /* 커서를 포인터로 설정 */
+    border-radius: 2px;
+    /* 버튼 모서리 둥글게 설정 */
+    width: 90px;
+    /* 버튼 너비 고정 */
+    height: 40px;
+    /* 버튼 높이 고정 */
+    text-align: center;
+    /* 텍스트 중앙 정렬 */
+}
+
+/* Styling the right column for GHG total */
+.ghg-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 200px;
+    /* Fixed width for GHG total display */
+}
+
+.ghg-number {
+    font-size: 60px;
+    color: #4CAF50;
+}
+
+.ghg {
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+
+/*Transport*/
+.calculator-type {
+    position: absolute;
+    /* 절대 위치로 설정 */
+    z-index: 100;
+    /* 다른 요소 위에 표시 */
+}
+
+.hidden {
+    display: none;
+    /* 요소를 숨깁니다. */
+}
