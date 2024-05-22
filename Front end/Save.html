@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Save Calculation</h1>
+    </header>
+    <main>
+        <div class="main-menu">
+            <h2>Save your calculation file as:</h2>
+            <p>(25 chars maximum)</p>
+            <input type="text" id="saveFileName" maxlength="25" placeholder="MyCalculationFile">
+            <div class="main-footer-buttons">
+                <button onclick="cancelSave()">Cancel</button>
+                <button onclick="saveFile()">Done</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>YourCarbonChoice © 2024</p>
+    </footer>
+    <script>
+        function cancelSave() {
+            window.location.href = 'main_menu.html'; // Return to main menu
+        }
+
+        function saveFile() {
+            const fileName = document.getElementById('saveFileName').value;
+            if (fileName) {
+                // Here you would save the file to the system
+                console.log(`File saved as ${fileName}`);
+                cancelSave();
+            } else {
+                alert('Please enter a file name.');
+            }
+        }
+    </script>
+</body>
+</html>
