@@ -5,6 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
+    <style>
+                .quick-calculation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        /* images */
+        .light-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .light-item img {
+            margin-right: 10px;
+        }
+    </style>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
 
@@ -60,14 +77,14 @@
                 <button class="tablinks" onclick="openTab(event, 'Detailed')">Detailed</button>
             </div>
 
-            <h1>Lighting Emissions Calculator</h1>
+            <h1>Lighting</h1>
             
             <div id="Quick" class="tabcontent">
                 <div>
                     <h3>How many light globes are switched on throughout the house?</h3>
                     <div class="quick-calculation">
                         <div class="light-item">
-                            <img src="Incandescent.png" alt="Incandescent">
+                            <img src="Assets/Incandescent.png" alt="Incandescent">
                             <div>
                                 <div class="light-type">INCANDESCENT</div>
                                 <div class="dropdown-container">
@@ -112,7 +129,7 @@
                         </div>
 
                         <div class="light-item">
-                            <img src="Halogen.png" alt="Halogen">
+                            <img src="Assets/Halogen.png" alt="Halogen">
                             <div>
                                 <div class="light-type">LOW VOLTAGE HALOGEN</div>
                                 <div class="dropdown-container">
@@ -157,7 +174,7 @@
                         </div>
 
                         <div class="light-item">
-                            <img src="Compact.png" alt="Compact">
+                            <img src="Assets/Compact.png" alt="Compact">
                             <div>
                                 <div class="light-type">COMPACT FLUORESCENT LAMP</div>
                                 <div class="dropdown-container">
@@ -202,7 +219,7 @@
                         </div>
 
                         <div class="light-item">
-                            <img src="Linear.png" alt="Linear">
+                            <img src="Assets/Linear.png" alt="Linear">
                             <div>
                                 <div class="light-type">LINEAR OR CIRCULAR FLUORESCENT LAMP</div>
                                 <div class="dropdown-container">
@@ -282,7 +299,7 @@
     <footer>
         <p>YourCarbonChoice © 2024</p>
     </footer>
-    <script src=".../Backend/Lighting module"></script>
+    <script src="../Backend/Lighting module.js"></script>
 </body>
 
 </html>
