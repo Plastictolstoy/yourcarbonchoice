@@ -1,70 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YourCarbonChoice</title>
-<link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCarbonChoice</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
+
 <body>
-<header>
-    <h1>YourCarbonChoice</h1>
-</header>
-<main>
-    <nav>
-        <a href="Transport.html"><button>Transport</button></a>
-        <a href="AirTravel.html"><button>Air Travel</button></a>
-        <a href="Heating & Cooling.html"><button>Heating & Cooling</button></a>
-        <a href="Hot water.html"><button>Hot Water</button></a>
-        <a href="Clothes_Dryer.html"><button>Clothes dryer</button></a>
-        <a href="Lighting.html"><button class="active">Lighting</button></a>
-        <a href="Refrigerator.html"><button>Refrigerator</button></a>
-        <a href="Cooking.html"><button>Cooking</button></a>
-        <a href="Appliances.html"><button>Appliances</button></a>
-        <a href="Food & Shopping.html"><button>Food & Shopping</button></a>
-        <a href="Waste.html"><button>Waste</button></a>
-    </nav>
-    <section id="emission-display">
-        <div id="emission-info">
-            <div id="emission-header">
-                <button class="addButton">+</button>
-                <span class="module-title">Lighting</span>
-                <button id="infoButton">?</button>
-            </div>
-            <div class="green-line"></div>
-            <div class="ghg-display">
-                <span>My household's GHG emissions:</span>
-                <div class="ghg-bar my-ghg">
-                    <progress id="emission-gauge" value="0" max="10"></progress>
+    <header>
+        <h1>YourCarbonChoice</h1>
+    </header>
+    <main>
+        <nav>
+            <a href="Transport.html"><button>Transport</button></a>
+            <a href="AirTravel.html"><button>Air Travel</button></a>
+            <a href="Heating & Cooling.html"><button>Heating & Cooling</button></a>
+            <a href="Hot water.html"><button>Hot Water</button></a>
+            <a href="Clothes_Dryer.html"><button>Clothes dryer</button></a>
+            <a href="Lighting.html"><button class="active">Lighting</button></a>
+            <a href="Refrigerator.html"><button>Refrigerator</button></a>
+            <a href="Cooking.html"><button>Cooking</button></a>
+            <a href="Appliances.html"><button>Appliances</button></a>
+            <a href="Food & Shopping.html"><button>Food & Shopping</button></a>
+            <a href="Waste.html"><button>Waste</button></a>
+        </nav>
+        <section id="emission-display">
+            <div id="emission-info">
+                <div id="emission-header">
+                    <button class="addButton">+</button>
+                    <span class="module-title">Lighting</span>
+                    <button id="infoButton">?</button>
+                </div>
+                <div class="green-line"></div>
+                <div class="ghg-display">
+                    <span>My household's GHG emissions:</span>
+                    <div class="ghg-bar my-ghg">
+                        <progress id="emission-gauge" value="0" max="10"></progress>
+                    </div>
+                </div>
+                <div class="ghg-display">
+                    <span>A typical household's GHG emissions:</span>
+                    <div class="ghg-bar typical-ghg"></div>
+                </div>
+                <div class="ghg-display">
+                    <span>A green household's GHG emissions:</span>
+                    <div class="ghg-bar green-ghg"></div>
                 </div>
             </div>
-        </div>
-            <div class="ghg-display">
-                <span>A typical household's GHG emissions:</span>
-                <div class="ghg-bar typical-ghg"></div>
+            <div class="ghg-total">
+                <div id="totalGHG" class="ghg-number">0.00</div>
+                <span class="ghg">Tonnes GHG</span>
             </div>
-            <div class="ghg-display">
-                <span>A green household's GHG emissions:</span>
-                <div class="ghg-bar green-ghg"></div>
+        </section>
+        <section id="calculator">
+            <h1>Lighting Emissions Calculator</h1>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detailed</button>
             </div>
+
+            <div id="Quick" class="tabcontent">
+                <div>
+                    <h3>How many light globes are switched on throughout the house?</h3>
+                    <div class="quick-calculation">
+                        <div class="light-item">
+                            <img src="Incandescent.png" alt="Incandescent">
+                            <div>
+                                <div class="light-type">INCANDESCENT</div>
+                                <div class="dropdown-container">
+                                    <label for="incandescent-count">How many?</label>
+                                    <select id="incandescent-count">
+                                        <option value="none">None</option>
+                                        <option value="some">Some</option>
+                                        <option value="many">Many</option>
+                                    </select>
+                                </div>
+                                <div class="dropdown-container">
+                                    <label for="incandescent-hours">How many hours per day?</label>
+                                    <select id="incandescent-hours">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="light-item">
+                            <img src="Halogen.png" alt="Halogen">
+                            <div>
+                                <div class="light-type">LOW VOLTAGE HALOGEN</div>
+                                <div class="dropdown-container">
+                                    <label for="halogen-count">How many?</label>
+                                    <select id="halogen-count">
+                                        <option value="none">None</option>
+                                        <option value="some">Some</option>
+                                        <option value="many">Many</option>
+                                    </select>
+                                </div>
+                                <div class="dropdown-container">
+                                    <label for="halogen-hours">How many hours per day?</label>
+                                    <select id="halogen-hours">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="light-item">
+                            <img src="Compact.png" alt="Compact">
+                            <div>
+                                <div class="light-type">COMPACT FLUORESCENT LAMP</div>
+                                <div class="dropdown-container">
+                                    <label for="cfl-count">How many?</label>
+                                    <select id="cfl-count">
+                                        <option value="none">None</option>
+                                        <option value="some">Some</option>
+                                        <option value="many">Many</option>
+                                    </select>
+                                </div>
+                                <div class="dropdown-container">
+                                    <label for="cfl-hours">How many hours per day?</label>
+                                    <select id="cfl-hours">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="light-item">
+                            <img src="Linear.png" alt="Linear">
+                            <div>
+                                <div class="light-type">LINEAR OR CIRCULAR FLUORESCENT LAMP</div>
+                                <div class="dropdown-container">
+                                    <label for="fluorescent-count">How many?</label>
+                                    <select id="fluorescent-count">
+                                        <option value="none">None</option>
+                                        <option value="some">Some</option>
+                                        <option value="many">Many</option>
+                                    </select>
+                                </div>
+                                <div class="dropdown-container">
+                                    <label for="fluorescent-hours">How many hours per day?</label>
+                                    <select id="fluorescent-hours">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="total-emissions">Total Emissions (kg CO2-eq/year):</label>
+                    <div id="total-emissions">0.00</div>
+                </div>
+            </div>
+
+            <div id="Detailed" class="tabcontent">
+                <h2>Detailed Calculation</h2>
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>GHGs</th>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Watts</th>
+                                <th>Number</th>
+                                <th>Summer</th>
+                                <th>Winter</th>
+                                <th>Dimming</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lighting-table-body"></tbody>
+                    </table>
+                </div>
+                <button onclick="addLight()">Add a light</button>
+            </div>
+        </section>
+        <div class="main-footer-buttons">
+            <a href="Main menu.html"><button>Main Menu</button></a>
+            <a href="Save.html"><button>Save</button></a>
+            <button>Personal</button>
+            <button>Report</button>
         </div>
-        <div class="ghg-total">
-            <div id="totalGHG" class="ghg-number">0.00</div>
-            <span class="ghg">Tonnes GHG</span>
-        </div>
-    </section>
-    <section id="calculator">
-        <!-- 내용을 비워 두었습니다. -->
-    </section>
-    <div class="main-footer-buttons">
-        <a href="Main menu.html"><button>Main Menu</button></a>  
-        <a href="Save.html"><button>Save</button></a>  
-        <button>Personal</button>
-        <button>Report</button>
-    </div>
-</main>
-<footer>
-    <p>YourCarbonChoice © 2024</p>
-</footer>
+    </main>
+    <footer>
+        <p>YourCarbonChoice © 2024</p>
+    </footer>
 </body>
+
 </html>
