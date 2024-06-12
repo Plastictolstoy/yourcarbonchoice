@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
     <style>
-                .quick-calculation {
+        .quick-calculation {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
@@ -53,8 +53,8 @@
                 <div class="green-line"></div>
                 <div class="ghg-display">
                     <span>My household's GHG emissions:</span>
-                    <div class="ghg-bar my-ghg">
-                        <progress id="emission-gauge" value="0" max="10"></progress>
+                    <div class="ghg-bar">
+                        <div class="my-ghg" id="emission-gauge" data-ghg="0.00"></div>
                     </div>
                 </div>
                 <div class="ghg-display">
@@ -78,7 +78,7 @@
             </div>
 
             <h1>Lighting</h1>
-            
+
             <div id="Quick" class="tabcontent">
                 <div>
                     <h3>How many light globes are switched on throughout the house?</h3>

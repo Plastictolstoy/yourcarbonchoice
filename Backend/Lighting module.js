@@ -1,135 +1,142 @@
-/// Quick tab calculations
-const lightEmissionFactors = {
-    "none": 0,
-    "some": 0.5,
-    "many": 1.5
-};
+document.addEventListener('DOMContentLoaded', function() {
+    const emissionGauge = document.getElementById('emission-gauge');
+    const totalEmissions = document.getElementById('total-emissions');
 
-const incandescentEmissionFactor = 0.06;
-const cflEmissionFactor = 0.02;
-const halogenEmissionFactor = 0.06;
-const fluorescentEmissionFactor = 0.04;
+    /// Quick tab calculations
+    const lightEmissionFactors = {
+        "none": 0,
+        "some": 0.5,
+        "many": 1.5
+    };
 
-function calculateQuickEmissions() {
-    const incandescentCount = document.getElementById('incandescent-count').value;
-    const incandescentHours = parseFloat(document.getElementById('incandescent-hours').value);
-    const cflCount = document.getElementById('cfl-count').value;
-    const cflHours = parseFloat(document.getElementById('cfl-hours').value);
-    const halogenCount = document.getElementById('halogen-count').value;
-    const halogenHours = parseFloat(document.getElementById('halogen-hours').value);
-    const fluorescentCount = document.getElementById('fluorescent-count').value;
-    const fluorescentHours = parseFloat(document.getElementById('fluorescent-hours').value);
+    const incandescentEmissionFactor = 0.06;
+    const cflEmissionFactor = 0.02;
+    const halogenEmissionFactor = 0.06;
+    const fluorescentEmissionFactor = 0.04;
 
-    let totalEmissions = 0;
-    totalEmissions += lightEmissionFactors[incandescentCount] * incandescentHours * incandescentEmissionFactor;
-    totalEmissions += lightEmissionFactors[cflCount] * cflHours * cflEmissionFactor;
-    totalEmissions += lightEmissionFactors[halogenCount] * halogenHours * halogenEmissionFactor;
-    totalEmissions += lightEmissionFactors[fluorescentCount] * fluorescentHours * fluorescentEmissionFactor;
+    function calculateQuickEmissions() {
+        const incandescentCount = document.getElementById('incandescent-count').value;
+        const incandescentHours = parseFloat(document.getElementById('incandescent-hours').value);
+        const cflCount = document.getElementById('cfl-count').value;
+        const cflHours = parseFloat(document.getElementById('cfl-hours').value);
+        const halogenCount = document.getElementById('halogen-count').value;
+        const halogenHours = parseFloat(document.getElementById('halogen-hours').value);
+        const fluorescentCount = document.getElementById('fluorescent-count').value;
+        const fluorescentHours = parseFloat(document.getElementById('fluorescent-hours').value);
 
-    document.getElementById('total-emissions').innerText = totalEmissions.toFixed(2);
-    document.getElementById('emission-gauge').value = totalEmissions;
-}
+        let totalEmissions = 0;
+        totalEmissions += lightEmissionFactors[incandescentCount] * incandescentHours * incandescentEmissionFactor;
+        totalEmissions += lightEmissionFactors[cflCount] * cflHours * cflEmissionFactor;
+        totalEmissions += lightEmissionFactors[halogenCount] * halogenHours * halogenEmissionFactor;
+        totalEmissions += lightEmissionFactors[fluorescentCount] * fluorescentHours * fluorescentEmissionFactor;
 
-/// Detailed tab calculations
-const detailedEmissionFactors = {
-    "ordinary-incandescent": 0.06,
-    "low-voltage-halogen": 0.06,
-    "compact-fluorescent-downlight": 0.02,
-    "led-halogen-replacement": 0.01,
-    "compact-fluorescent-lamp": 0.02,
-    "linear-or-circular-fluorescent-lamp": 0.04,
-    "flood-light": 0.12,
-    "other": 0.05
-};
-
-let lightCount = 1;
-
-function addLight() {
-    const tableBody = document.getElementById('lighting-table-body');
-    const id = `L${lightCount++}`;
-    const row = document.createElement('tr');
-
-    row.innerHTML = `
-                <td><button onclick="removeLight('${id}')">X</button></td>
-                <td id="${id}-ghgs" class="ghg-cell">0.00 kg CO2-eq/year</td>
-                <td onclick="toggleInput('${id}-id')" id="${id}-id-td"><span>${id}</span><input type="text" id="${id}-id" value="${id}" class="hidden-input"></td>
-                <td onclick="toggleInput('${id}-type')" id="${id}-type-td"><span>Ordinary (incandescent)</span><select id="${id}-type" class="hidden-input">
-                    <option value="ordinary-incandescent">Ordinary (incandescent)</option>
-                    <option value="low-voltage-halogen">Low voltage halogen</option>
-                    <option value="compact-fluorescent-downlight">Compact fluorescent downlight</option>
-                    <option value="led-halogen-replacement">LED (halogen replacement)</option>
-                    <option value="compact-fluorescent-lamp">Compact fluorescent lamp</option>
-                    <option value="linear-or-circular-fluorescent-lamp">Linear or circular fluorescent lamp</option>
-                    <option value="flood-light">Flood light</option>
-                    <option value="other">Other</option>
-                </select></td>
-                <td onclick="toggleInput('${id}-watts')" id="${id}-watts-td"><span>0</span><input type="number" id="${id}-watts" class="hidden-input" min="0" value="0"></td>
-                <td onclick="toggleInput('${id}-number')" id="${id}-number-td"><span>0</span><input type="number" id="${id}-number" class="hidden-input" min="0" value="0"></td>
-                <td onclick="toggleInput('${id}-summer')" id="${id}-summer-td"><span>0</span><input type="number" id="${id}-summer" class="hidden-input" min="0" value="0"></td>
-                <td onclick="toggleInput('${id}-winter')" id="${id}-winter-td"><span>0</span><input type="number" id="${id}-winter" class="hidden-input" min="0" value="0"></td>
-                <td onclick="toggleInput('${id}-dimming')" id="${id}-dimming-td"><span>0</span><input type="number" id="${id}-dimming" class="hidden-input" min="0" max="100" value="0"></td>
-            `;
-
-    tableBody.appendChild(row);
-
-    const inputs = row.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        input.addEventListener('change', () => calculateDetailedEmissions(id));
-    });
-}
-
-function removeLight(id) {
-    const row = document.querySelector(`#${id}-ghgs`).closest('tr');
-    row.remove();
-}
-
-function toggleInput(id) {
-    const span = document.querySelector(`#${id}-td span`);
-    const input = document.getElementById(id);
-
-    document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-    document.querySelector(`#${id}-td`).classList.add('active');
-
-    if (input.classList.contains('hidden-input')) {
-        input.classList.remove('hidden-input');
-        span.style.display = 'none';
-        input.style.display = 'block';
-        input.focus();
+        updateGHG(totalEmissions);
     }
 
-    input.addEventListener('blur', () => {
-        input.classList.add('hidden-input');
-        span.style.display = 'block';
-        input.style.display = 'none';
-        span.innerText = input.value;
-        calculateDetailedEmissions(id.split('-')[0]);
-    });
-}
+    /// Detailed tab calculations
+    const detailedEmissionFactors = {
+        "ordinary-incandescent": 0.06,
+        "low-voltage-halogen": 0.06,
+        "compact-fluorescent-downlight": 0.02,
+        "led-halogen-replacement": 0.01,
+        "compact-fluorescent-lamp": 0.02,
+        "linear-or-circular-fluorescent-lamp": 0.04,
+        "flood-light": 0.12,
+        "other": 0.05
+    };
 
-function calculateDetailedEmissions(id) {
-    const type = document.getElementById(`${id}-type`).value;
-    const watts = parseFloat(document.getElementById(`${id}-watts`).value);
-    const number = parseFloat(document.getElementById(`${id}-number`).value);
-    const summerHours = parseFloat(document.getElementById(`${id}-summer`).value);
-    const winterHours = parseFloat(document.getElementById(`${id}-winter`).value);
-    const dimming = parseFloat(document.getElementById(`${id}-dimming`).value) / 100;
+    let lightCount = 1;
 
-    const emissionFactor = detailedEmissionFactors[type] || 0;
+    function addLight() {
+        const tableBody = document.getElementById('lighting-table-body');
+        const id = `L${lightCount++}`;
+        const row = document.createElement('tr');
 
-    const Slamphrs = summerHours * 120;
-    const Wlamphrs = winterHours * 245;
-    const DimlampFactor = (0.86 * dimming + 0.16);
+        row.innerHTML = `
+            <td><button onclick="removeLight('${id}')">X</button></td>
+            <td id="${id}-ghgs" class="ghg-cell">0.00 kg CO2-eq/year</td>
+            <td onclick="toggleInput('${id}-id')" id="${id}-id-td"><span>${id}</span><input type="text" id="${id}-id" value="${id}" class="hidden-input"></td>
+            <td onclick="toggleInput('${id}-type')" id="${id}-type-td"><span>Ordinary (incandescent)</span><select id="${id}-type" class="hidden-input">
+                <option value="ordinary-incandescent">Ordinary (incandescent)</option>
+                <option value="low-voltage-halogen">Low voltage halogen</option>
+                <option value="compact-fluorescent-downlight">Compact fluorescent downlight</option>
+                <option value="led-halogen-replacement">LED (halogen replacement)</option>
+                <option value="compact-fluorescent-lamp">Compact fluorescent lamp</option>
+                <option value="linear-or-circular-fluorescent-lamp">Linear or circular fluorescent lamp</option>
+                <option value="flood-light">Flood light</option>
+                <option value="other">Other</option>
+            </select></td>
+            <td onclick="toggleInput('${id}-watts')" id="${id}-watts-td"><span>0</span><input type="number" id="${id}-watts" class="hidden-input" min="0" value="0"></td>
+            <td onclick="toggleInput('${id}-number')" id="${id}-number-td"><span>0</span><input type="number" id="${id}-number" class="hidden-input" min="0" value="0"></td>
+            <td onclick="toggleInput('${id}-summer')" id="${id}-summer-td"><span>0</span><input type="number" id="${id}-summer" class="hidden-input" min="0" value="0"></td>
+            <td onclick="toggleInput('${id}-winter')" id="${id}-winter-td"><span>0</span><input type="number" id="${id}-winter" class="hidden-input" min="0" value="0"></td>
+            <td onclick="toggleInput('${id}-dimming')" id="${id}-dimming-td"><span>0</span><input type="number" id="${id}-dimming" class="hidden-input" min="0" max="100" value="0"></td>
+        `;
 
-    const totalEmissions = number * watts / 1000 * DimlampFactor * (Slamphrs + Wlamphrs) * emissionFactor * 3.6;
+        tableBody.appendChild(row);
 
-    document.getElementById(`${id}-ghgs`).innerText = totalEmissions.toFixed(2) + " kg CO2-eq/year";
-}
+        const inputs = row.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('change', () => calculateDetailedEmissions(id));
+        });
+    }
 
-// add event listener after loading DOM
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementsByClassName('tablinks')[0].click();
-    addLight(); // Add initial light row for detailed tab
+    function removeLight(id) {
+        const row = document.querySelector(`#${id}-ghgs`).closest('tr');
+        row.remove();
+    }
 
+    function toggleInput(id) {
+        const span = document.querySelector(`#${id}-td span`);
+        const input = document.getElementById(id);
+
+        document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+        document.querySelector(`#${id}-td`).classList.add('active');
+
+        if (input.classList.contains('hidden-input')) {
+            input.classList.remove('hidden-input');
+            span.style.display = 'none';
+            input.style.display = 'block';
+            input.focus();
+        }
+
+        input.addEventListener('blur', () => {
+            input.classList.add('hidden-input');
+            span.style.display = 'block';
+            input.style.display = 'none';
+            span.innerText = input.value;
+            calculateDetailedEmissions(id.split('-')[0]);
+        });
+    }
+
+    function calculateDetailedEmissions(id) {
+        const type = document.getElementById(`${id}-type`).value;
+        const watts = parseFloat(document.getElementById(`${id}-watts`).value);
+        const number = parseFloat(document.getElementById(`${id}-number`).value);
+        const summerHours = parseFloat(document.getElementById(`${id}-summer`).value);
+        const winterHours = parseFloat(document.getElementById(`${id}-winter`).value);
+        const dimming = parseFloat(document.getElementById(`${id}-dimming`).value) / 100;
+
+        const emissionFactor = detailedEmissionFactors[type] || 0;
+
+        const Slamphrs = summerHours * 120;
+        const Wlamphrs = winterHours * 245;
+        const DimlampFactor = (0.86 * dimming + 0.16);
+
+        const totalEmissions = number * watts / 1000 * DimlampFactor * (Slamphrs + Wlamphrs) * emissionFactor * 3.6;
+
+        document.getElementById(`${id}-ghgs`).innerText = totalEmissions.toFixed(2) + " kg CO2-eq/year";
+    }
+
+    // Example function to update GHG value
+    function updateGHG(value) {
+        totalEmissions.textContent = value.toFixed(2);
+        const percentage = (value / 10) * 100;
+        emissionGauge.style.width = percentage + '%';
+        emissionGauge.setAttribute('data-ghg', value.toFixed(2) + ' Tonnes GHG');
+    }
+
+    // Initialize event listeners
     document.getElementById('incandescent-count').addEventListener('change', calculateQuickEmissions);
     document.getElementById('incandescent-hours').addEventListener('change', calculateQuickEmissions);
     document.getElementById('cfl-count').addEventListener('change', calculateQuickEmissions);
@@ -138,6 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('halogen-hours').addEventListener('change', calculateQuickEmissions);
     document.getElementById('fluorescent-count').addEventListener('change', calculateQuickEmissions);
     document.getElementById('fluorescent-hours').addEventListener('change', calculateQuickEmissions);
+
+    document.getElementsByClassName('tablinks')[0].click();
+    addLight(); // Add initial light row for detailed tab
 });
 
 function openTab(evt, tabName) {
