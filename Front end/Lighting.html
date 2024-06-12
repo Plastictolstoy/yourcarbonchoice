@@ -21,6 +21,34 @@
         .light-item img {
             margin-right: 10px;
         }
+
+                /* Table css */
+                .table-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .ghg-cell {
+            background-color: green;
+            color: white;
+        }
+
+        .hidden-input {
+            display: none;
+        }
     </style>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
@@ -267,7 +295,6 @@
             </div>
 
             <div id="Detailed" class="tabcontent">
-                <h2>Detailed Calculation</h2>
                 <div class="table-container">
                     <table border="1">
                         <thead>
