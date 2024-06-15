@@ -8,65 +8,86 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-        /* Layout styling */
-        .quick-calculation {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 20px;
-        }
+    .quick-calculation {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 20px;
+    }
 
-        .quick-calculation label {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
+    .item {
+        display: flex;
+        align-items: flex-start;
+    }
 
-        .quick-calculation .small-label {
-            font-size: 0.9em;
-            font-weight: normal;
-        }
+    .quick-calculation img {
+        max-width: 150px;
+        align-self: start;
+    }
 
-        .quick-calculation img {
-            max-width: 150px;
-            align-self: start;
-        }
+    .dropdown-container {
+        margin-bottom: 10px;
+        margin-left: 30px;
+        /* Adjust this value to control the spacing */
+    }
 
-        .dropdown-container {
-            margin-bottom: 10px;
-            margin-left: 30px;
-            /* Adjust this value to control the spacing */
-        }
+    .dropdown-container label {
+        margin-right: 10px;
+        min-width: 150px;
+    }
 
-        /* Table css */
-        .table-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            position: relative;
-        }
+    .dropdown-container select,
+    .dropdown-container input {
+        margin-right: 20px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    #emission-gauge {
+        width: 100%;
+        height: 30px;
+    }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
+    #emission-gauge:hover::after {
+        content: attr(title);
+        position: absolute;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
 
-        .ghg-cell {
-            background-color: green;
-            color: white;
-        }
+    .table-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        position: relative;
+    }
 
-        .hidden-input {
-            display: none;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        .active {
-            background-color: #ffff99;
-        }
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .ghg-cell {
+        background-color: green;
+        color: white;
+    }
+
+    .hidden-input {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
 </style>
 
 <body>
