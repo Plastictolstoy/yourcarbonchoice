@@ -327,41 +327,6 @@ nav button:hover {
     line-height: normal;
 }
 
-.module-info {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    /* 중앙 정렬 */
-    padding: 20px;
-    margin-bottom: 20px;
-    /* 하단 마진으로 간격 조정 */
-}
-
-.module-type {
-    align-items: flex-start;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    /* 제목과 세부사항 사이의 간격 */
-    font-size: 20px;
-    /* 글씨 크기 조정 */
-    font-weight: bold;
-    /* 글씨 두께 조정 */
-}
-
-.module-details {
-    display: flex;
-    align-items: center;
-    /* 내부 아이템 수직 중앙 정렬 */
-    justify-content: center;
-    /* 내부 아이템 수평 중앙 정렬 */
-}
-
-.module-details img {
-    margin-right: 40px;
-    /* 이미지와 텍스트 사이 간격 */
-}
-
-
 .option-group {
     display: flex;
     align-items: center;

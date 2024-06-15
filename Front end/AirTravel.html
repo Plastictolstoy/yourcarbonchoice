@@ -7,10 +7,46 @@
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
     <style>
-        /* General styling */
+        /* Layout styling */
+        .quick-calculation {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+        }
 
-        /* Table css */
-        .table-container {
+        .item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .quick-calculation img {
+            max-width: 150px;
+            align-self: flex-start;
+        }
+
+        .dropdown-wrapper {
+            margin-top: -20px;
+            /* Adjust this value to move the dropdown containers higher */
+        }
+
+        .dropdown-container {
+            margin-bottom: 10px;
+            margin-left: 50px;
+            /* Adjust this value to control the spacing */
+        }
+
+        .dropdown-container label {
+            margin-right: 10px;
+            min-width: 150px;
+        }
+
+        .dropdown-container select,
+        .dropdown-container input {
+            margin-right: 20px;
+        }
+
+                /* Table css */
+                .table-container {
             overflow-x: auto;
             white-space: nowrap;
             position: relative;
@@ -37,53 +73,10 @@
             display: none;
         }
 
-        /* Styling for drop-downs and labels */
-        .flight-type {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-top: 20px;
+        .active {
+            background-color: #ffff99;
         }
-
-        .dropdown-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .dropdown-container label {
-            margin-right: 10px;
-            min-width: 150px;
-        }
-
-        .dropdown-container select {
-            margin-right: 20px;
-        }
-
-        .quick-calculation {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-        }
-
-        /* gauge in quick */
-        #emission-gauge {
-            width: 100%;
-            height: 30px;
-        }
-
-        #emission-gauge:hover::after {
-            content: attr(title);
-            position: absolute;
-            background-color: #333;
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            top: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-        }
-        </style>
+    </style>
 </head>
 
 <body>
@@ -157,67 +150,85 @@
                 <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
             </div>
             <div id="Quick" class="tabcontent">
-                <div id="calculator-options">
-                    <div class="module-info">
-                        <h2>Air Travel</h2>
-                        <div class="module-details">
-                            <img src="Assets/airplane.png" alt="Air Travel" style="width: 100px; height: 100px;">
-                            <div class="ghg-number">0.00t</div>
-                        </div>
-                    </div>
-                    <div>
-                        </br>
-                        <h4>How many of the following types of flights does your household take each year?</h4>
-                        <p>Select the types of flights taken by each person.</p>
-                        </br>
-                        </br>
-                        <div class="option-group">
-                            <label>Melbourne - Sydney, Sydney - Brisbane or Melbourne - Adelaide</label>
-                            <select id="typicalDomestic">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="option-group">
-                            <label>Sydney - Perth</label>
-                            <select id="sydneyPerth">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="option-group">
-                            <label>Typical flight from Australia to Asia</label>
-                            <select id="typicalAusAsia">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="option-group">
-                            <label>Typical flight from Australia to USA or Europe</label>
-                            <select id="typicalAusUsaEurope">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                <h2>Air Travel</h2>
+                <div class="quick-calculation">
+                    <div class="item">
+                        <img src="Assets/airplane.png" alt="Clothes Dryer">
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-container">
+                                <h3>How many of the following types of flights does your household take each year?</h3>
+                                <p>Select the types of flights taken by each person.</p>
+                                <label for="typicalDomestic">Melbourne - Sydney, Sydney - Brisbane or Melbourne - Adelaide</label>
+                                <select id="typicalDomestic">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+            
+                            <div class="dropdown-container">
+                                <label for="sydneyPerth">Sydney - Perth</label>
+                                <select id="sydneyPerth">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+            
+                            <div class="dropdown-container">
+                                <label for="typicalAusAsia">Typical flight from Australia to Asia</label>
+                                <select id="typicalAusAsia">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+            
+                            <div class="dropdown-container">
+                                <label for="typicalAusUsaEurope">Typical flight from Australia to USA or Europe</label>
+                                <select id="typicalAusUsaEurope">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div id="Detailed" class="tabcontent">
                 <h2>Detailed Calculation</h2>
                 <div class="table-container">
