@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YourCarbonChoice</title>
-<link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCarbonChoice</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
+
 <body>
-<header>
-    <h1>YourCarbonChoice</h1>
-</header>
-<main>
-    <nav>
-        <a href="Transport.html"><button>Transport</button></a>
-        <a href="AirTravel.html"><button>Air Travel</button></a>
-        <a href="Heating & Cooling.html"><button>Heating & Cooling</button></a>
-        <a href="Hot water.html"><button class="active">Hot Water</button></a>
-        <a href="Clothes_Dryer.html"><button>Clothes dryer</button></a>
-        <a href="Lighting.html"><button>Lighting</button></a>
-        <a href="Refrigerator.html"><button>Refrigerator</button></a>
-        <a href="Cooking.html"><button>Cooking</button></a>
-        <a href="Appliances.html"><button>Appliances</button></a>
-        <a href="Food & Shopping.html"><button>Food & Shopping</button></a>
-        <a href="Waste.html"><button>Waste</button></a>
-    </nav>
-    <section id="emission-display">
-        <div id="emission-info">
-            <div id="emission-header">
-                <button class="addButton">+</button>
-                <span class="module-title">Hot Water</span>
-                <button id="infoButton">?</button>
+    <header>
+        <h1>YourCarbonChoice</h1>
+    </header>
+    <main>
+        <!-- Navigation Section Start -->
+        <nav>
+            <a href="Transport.html"><button>Transport <img src="images/transport.png"
+                        alt="Transport Icon"></button></a>
+            <a href="AirTravel.html"><button> Air Travel <img src="images/airplane.png" alt="Air Travel Icon">
+                </button></a>
+            <a href="Heating & Cooling.html"> <button>Heating &amp;<br>Cooling<img src="images/heating.png"
+                        alt="Heating Icon" class="heating-cooling-icon"></button></a>
+            <div id="totalHeatingCooling" class="heatingCooling_2"></div>
+            <a href="Hot water.html"><button class="active">Hot Water <img src="images/hotwater.png"
+                        alt="Hot Water Icon"></button></a>
+            <div id="totalHotWater" class="hotwater_2"></div>
+            <a href="Clothes_Dryer.html"><button>Clothes dryer <img src="images/clothes.svg" alt="Clothes Icon">
+                </button></a>
+            <div id="totalDryer" class="dryer_2"></div>
+            <a href="Lighting.html"><button>Lighting <img src="images/lighting.png" alt="Lighting Icon"></button></a>
+            <a href="Refrigerator.html"><button>Refrigerator<img src="images/Refrigerator.svg"
+                        alt="Refrigerator Icon"></button></a>
+            <a href="Cooking.html"><button>Cooking<img src="images/Cooking.svg" alt="Cooking Icon"></button></a>
+            <a href="Appliances.html"><button>Appliances<img src="images/Appliance.svg"
+                        alt="Appliances Icon"></button></a>
+            <a href="Food & Shopping.html"><button>Food &amp;<br> Shopping <img src="images/foodshopping.png"
+                        alt="Food Shopping Icon" class="food-icon"></button></a>
+            <a href="Waste.html"><button>Waste <img src="images/waste.png" alt="Waste Icon"></button></a>
+        </nav>
+        <section id="emission-display">
+            <div id="emission-info">
+                <div id="emission-header">
+                    <button class="addButton">+</button>
+                    <span class="module-title">Hot Water</span>
+                    <button id="infoButton">?</button>
+                </div>
+                <div class="green-line"></div>
+                <div class="ghg-display">
+                    <span>My household's GHG emissions:</span>
+                    <div class="ghg-bar my-ghg"></div>
+                </div>
+                <div class="ghg-display">
+                    <span>A typical household's GHG emissions:</span>
+                    <div class="ghg-bar typical-ghg"></div>
+                </div>
+                <div class="ghg-display">
+                    <span>A green household's GHG emissions:</span>
+                    <div class="ghg-bar green-ghg"></div>
+                </div>
             </div>
-            <div class="green-line"></div>
-            <div class="ghg-display">
-                <span>My household's GHG emissions:</span>
-                <div class="ghg-bar my-ghg"></div>
+            <div class="ghg-total">
+                <div id="totalGHG" class="ghg-number">0.00</div>
+                <span class="ghg">Tonnes GHG</span>
             </div>
-            <div class="ghg-display">
-                <span>A typical household's GHG emissions:</span>
-                <div class="ghg-bar typical-ghg"></div>
-            </div>
-            <div class="ghg-display">
-                <span>A green household's GHG emissions:</span>
-                <div class="ghg-bar green-ghg"></div>
-            </div>
+        </section>
+        <section id="calculator">
+            <!-- 내용을 비워 두었습니다. -->
+        </section>
+        <div class="main-footer-buttons">
+            <a href="Main menu.html"><button>Main Menu</button></a>
+            <a href="Save.html"><button>Save</button></a>
+            <button>Personal</button>
+            <a href="report.html"><button>Report</button></a>
         </div>
-        <div class="ghg-total">
-            <div id="totalGHG" class="ghg-number">0.00</div>
-            <span class="ghg">Tonnes GHG</span>
-        </div>
-    </section>
-    <section id="calculator">
-        <!-- 내용을 비워 두었습니다. -->
-    </section>
-    <div class="main-footer-buttons">
-        <a href="Main menu.html"><button>Main Menu</button></a>  
-        <a href="Save.html"><button>Save</button></a>  
-        <button>Personal</button>
-        <a href="report.html"><button>Report</button></a> 
-    </div>
-</main>
-<footer>
-    <p>YourCarbonChoice © 2024</p>
-</footer>
+    </main>
+    <footer>
+        <p>YourCarbonChoice © 2024</p>
+    </footer>
 </body>
+
 </html>
