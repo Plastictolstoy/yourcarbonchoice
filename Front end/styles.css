@@ -230,6 +230,23 @@ nav button:hover {
     cursor: pointer;
 }
 
+/* Style info-box */
+#infoBox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Libre Baskerville';
+    font-size: 20px;
+}
+
+/* Green line under Module name */
 .green-line {
     height: 2px;
     background-color: #4CAF50;
@@ -245,6 +262,7 @@ nav button:hover {
     justify-content: space-between;
 }
 
+/*GHG display*/
 .ghg-display {
     display: flex;
     align-items: center;
@@ -279,13 +297,14 @@ nav button:hover {
     font-weight: 400;
     line-height: normal;
 }
-
+/*GHG Gauge*/
 .my-ghg {
     background-color: rgb(223, 137, 57);
     width: 0;
     transition: width 0.5s ease-in-out;
     height: 100%;
 }
+
 /*
 .typical-ghg {
     background-color: rgb(223, 137, 57);
@@ -295,6 +314,8 @@ nav button:hover {
     background-color: rgb(223, 137, 57);
 }
 */
+
+/*Calculator section*/
 .module-title {
     color: #000;
     font-family: "PP Neue Montreal";
@@ -368,33 +389,35 @@ select {
 
 .calculator-buttons {
     display: flex;
-    flex-direction: row; /* Organize buttons in a column */
-    align-items: center; /* Center the buttons within the div */
+    flex-direction: row;
+    /* Organize buttons in a column */
+    align-items: center;
+    /* Center the buttons within the div */
     justify-content: flex-start;
     margin-bottom: 300px;
     float: right;
 }
 
 .calculator-buttons button {
-    width: 80px; 
-    height: 30px; 
-    flex-shrink: 0; 
+    width: 80px;
+    height: 30px;
+    flex-shrink: 0;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    font-family: 'Inter', sans-serif; 
-    font-size: 12px; 
-    font-weight: 500; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    margin: 5px 0; 
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
 }
 
 .calculator-buttons button:hover {
-    background-color:  rgba(47, 126, 45, 0.80);
+    background-color: rgba(47, 126, 45, 0.80);
 }
 
 .main-footer-buttons {
@@ -501,40 +524,42 @@ label {
 .bar {
     height: 100%;
     background-color: #76c7c0;
-    width: 0; /* Initial width is 0 */
-    transition: width 0.5s; /* Smooth transition for width change */
+    width: 0;
+    /* Initial width is 0 */
+    transition: width 0.5s;
+    /* Smooth transition for width change */
 }
 
 /* Container for all categories for HEATING AND COOLING */
 .category-container {
     display: flex;
-    flex-wrap: wrap;  
-    justify-content: center;  
-    gap: 50px;  
-    max-width: 600px; 
-    margin: 0 auto;  
-    padding: 20px 0; 
-   padding-left: 42px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+    padding-left: 42px;
 }
 
 
 .category-item {
-    flex: 1 1 45%;  
+    flex: 1 1 45%;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-    text-align: center; 
+    text-align: center;
 }
 
 .category-item img {
-    width: 100px;  
-    height: auto; 
-    margin-bottom: 10px;  
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 .category-item p {
-    font-size: 16px;  
-    color: #333;  
+    font-size: 16px;
+    color: #333;
 }
 
 /* Refrigerator Section */
@@ -595,9 +620,9 @@ label {
 .appliance-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; 
-    max-width: 1000px; 
-    margin: 0 auto; 
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 20px;
 
 
@@ -606,64 +631,90 @@ label {
 .appliance {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 
-    border-radius: 8px; 
+    border-radius: 8px;
 }
 
 .appliance img {
-    width: 50px; /* Adjust as necessary */
-    height: auto; /* Maintain aspect ratio */
+    width: 50px;
+    /* Adjust as necessary */
+    height: auto;
+    /* Maintain aspect ratio */
 }
 
 .appliance h2 {
-    font-size: 15px; /* Appropriately sized headers */
-    color: #333; /* Dark color for text */
-    margin-bottom: 10px; /* Space below the header */
+    font-size: 15px;
+    /* Appropriately sized headers */
+    color: #333;
+    /* Dark color for text */
+    margin-bottom: 10px;
+    /* Space below the header */
 }
 
 .appliance select {
-    width: 100%; /* Full width of the container */
-    margin-bottom: 10px; /* Space between dropdowns */
-    border: 1px solid #ccc; /* Subtle border */
-    border-radius: 4px; /* Rounded corners */
+    width: 100%;
+    /* Full width of the container */
+    margin-bottom: 10px;
+    /* Space between dropdowns */
+    border: 1px solid #ccc;
+    /* Subtle border */
+    border-radius: 4px;
+    /* Rounded corners */
 }
 
 /*Food and Shopping */
 body {
-    font-family: Arial, sans-serif; /* Sets a clean, readable font */
+    font-family: Arial, sans-serif;
+    /* Sets a clean, readable font */
 }
 
 .spending-form {
-    max-width: 730px; /* Adjust width as needed to match the design */
-    align-items: center; /* Centers items vertically */
-    justify-content: space-between; /* Distributes space between items */
-    border-radius: 8px; /* Rounded corners */
+    max-width: 730px;
+    /* Adjust width as needed to match the design */
+    align-items: center;
+    /* Centers items vertically */
+    justify-content: space-between;
+    /* Distributes space between items */
+    border-radius: 8px;
+    /* Rounded corners */
     margin-top: 100px;
 }
 
 .spending-form label {
-    flex: 1; /* Allows the label to fill available space */
-    margin-right: 10px; /* Space between label and input */
+    flex: 1;
+    /* Allows the label to fill available space */
+    margin-right: 10px;
+    /* Space between label and input */
 }
 
 .spending-form input[type="number"] {
-    width: 100px; /* Fixed width for the input */
-    padding: 8px; /* Padding inside the input */
-    border: 1px solid #ccc; /* Subtle border around the input */
-    border-radius: 4px; /* Rounded corners for the input */
+    width: 100px;
+    /* Fixed width for the input */
+    padding: 8px;
+    /* Padding inside the input */
+    border: 1px solid #ccc;
+    /* Subtle border around the input */
+    border-radius: 4px;
+    /* Rounded corners for the input */
 }
 
 .spending-form button {
-    padding: 10px 20px; /* Padding inside the button */
-    background-color: orange; /* Bright orange background for visibility */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
+    padding: 10px 20px;
+    /* Padding inside the button */
+    background-color: orange;
+    /* Bright orange background for visibility */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 4px;
+    /* Rounded corners for the button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
 }
 
 .spending-form button:hover {
-    background-color: darkorange; /* Darker orange on hover */
+    background-color: darkorange;
+    /* Darker orange on hover */
 }
-
