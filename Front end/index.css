@@ -1,0 +1,350 @@
+html {
+    height: 300%; 
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    flex-direction: column; 
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #FAEFE0BF; 
+    flex: 1;
+}
+
+.site-header, .main, .site-footer {
+    width: 100%; 
+}
+
+.main {
+    flex: 1; 
+    overflow: auto; 
+    width: 100%;
+}
+
+
+
+
+/*  styling to control width and padding */
+.headerLogo {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+   
+}
+
+/* Header styling */
+.site-header {
+    background-color: #FAEFE0BF; 
+    border-bottom: 1px solid #ddd; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+/* Logo styling */
+.logo {
+    height: 270px;
+    width:100%; 
+}
+
+/* home page image styling */
+
+.homepage {
+    width: 100%; 
+    max-width: 800px; 
+    height: auto; 
+    position: absolute;
+    top: 38%;
+    right: 0; 
+}
+.homeText {
+    font-family: 'Outfit'; 
+    font-weight: bold;
+    text-align: left; 
+    position: absolute; 
+    top: 38%; 
+    left: 8%; 
+}
+
+.homeText h1 {
+    font-size: 125px; 
+    margin-bottom: -40px; 
+}
+
+.learn-more-btn {
+    background-color: transparent; 
+    position: absolute;
+    border: 2px solid #000; 
+    color: #000; 
+    font-family: 'Outfit'; 
+    font-size: 16px; 
+    padding: 15px 90px; 
+    text-align: center;
+    text-transform: uppercase; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    margin-top: 12%; 
+    left: 1%;
+}
+
+.learn-more-btn:hover {
+    background-color: #000; 
+    color: #fff; 
+}
+
+
+.homeText1 {
+    font-family: 'Outfit'; 
+    font-weight: bold;
+    text-align: left; 
+    position: absolute; 
+    top: 120%; 
+    left: 120px; 
+
+}
+
+.homeText1 h1 {
+    font-size: 120px; 
+    margin-bottom: -40px; 
+}
+
+.home_page2 {
+    position: absolute; 
+    top: 150%;
+    left: 5%; 
+    right: auto; 
+    float: left;
+     display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 20px; 
+
+}
+.homepage2 {
+    height: 600px;
+    width: 900px;
+    max-width: 100%; 
+    height: auto; 
+}
+
+
+.climate-change-section {
+    font-family: 'Outfit', sans-serif;
+    color: #000;
+    text-align: left;
+    flex: 1; 
+    padding: 20px; 
+    max-width: 600px; 
+}
+
+.climate-change-section p:first-child {
+    font-size: 25px;
+    font-weight: 450;
+    margin-top: -6em; 
+    margin-bottom: 1em;
+    line-height: 1.0;
+    text-overflow: ellipsis; 
+}
+
+.climate-change-section p:nth-of-type(2) {
+    font-size: 20px; 
+    margin-top: 1em; 
+    margin-bottom: 0em;
+}
+
+
+.climate-change-section ul {
+    margin-top: 2em;
+    padding-left: 0;
+}
+
+.climate-change-section li {
+    font-size: 20px;
+
+    margin-bottom: 0em;
+}
+
+.getStarted {
+    position: absolute; 
+    top: 220%; 
+    left: 680px; 
+    background-color: #FAEFE0BF;
+}
+.getStarted h1 {
+    font-family: 'Outfit'; 
+    text-align: left; 
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Styling for all inputs and dropdowns */
+.form-input, .form-dropdown {
+    font-family: 'Outfit';
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 20px;
+    font-weight: 500;
+    border: 2px solid black;
+    border-radius: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+    position: relative;
+    text-align: center;
+    color: black; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover and focus states for inputs and dropdowns */
+.form-input:hover, .form-dropdown:hover,
+.form-input:focus, .form-dropdown:focus {
+    background-color: black; 
+    color: white; 
+    border-color: #FAEFE0BF; 
+}
+
+/* Specific styles for placeholders to ensure they are visible */
+.form-input::placeholder, .form-dropdown::placeholder {
+    color: black; 
+    opacity: 1; 
+}
+
+/* Hover and focus states for placeholders */
+.form-input:hover::placeholder, .form-input:focus::placeholder,
+.form-dropdown:hover::placeholder, .form-dropdown:focus::placeholder {
+    color: #FAEFE0BF; 
+}
+
+/* Flexbox layout for fuel type and green energy inputs */
+.fuel-type-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fuel-type-group .form-dropdown {
+    width: 50%; 
+    margin-right: 10px; 
+}
+
+.fuel-type-group .percentage-input {
+    width: 50%; 
+}
+
+/* Styling for the submit button */
+.tablinks.submit {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 0px;
+    
+
+}
+.submit-link { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.submit-link:hover, .submit-link:focus {
+    text-decoration: none; 
+}
+
+
+.tablinks.submit:hover {
+    background-color: black;
+}
+
+/* Styling for percentage bar */
+.percentage-bar {
+    width: 50%; 
+    background-color: #ccc; 
+    height: 20px; 
+    margin-top: 20px; 
+    margin-left: 50%; 
+    border-radius: 20px;
+
+
+}
+
+.percentage-filled {
+    background-color: green; 
+    height: 100%; 
+    width: 0%; 
+    border-radius: 20px;
+}
+
+.percentage-text {
+    font-family:'Outfit';
+    font-size: 15px;
+    margin-left: 95%; 
+}
+
+.site-footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 129%;
+}
+
+.footer-logo-container {
+    margin-bottom: 10px; 
+}
+
+.footer-logo {
+    position: relative;
+    width: 150px; 
+    height: auto;
+ 
+}
+
+.footer-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    
+}
+
+.footer-column {
+    border: 1px solid white;
+    padding: 10px; 
+    width: 32%; 
+    box-sizing: border-box;
+    
+}
+
+.footer-column h2, .footer-column p {
+    margin: 25px 0;
+    margin-left: 55px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    text-decoration: underline;
+}
+
+.social-icon img {
+    width: 30px;  /* Adjust width as necessary */
+    height: 30px; /* Adjust height as necessary */
+    border-radius: 50%; /* Makes the image circular */
+    display: block;  /* Removes any extra space below the image */
+}
