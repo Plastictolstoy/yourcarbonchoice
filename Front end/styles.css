@@ -20,28 +20,39 @@ body {
 
 /* Header */
 header {
-    font-family: 'PP Neue Montreal', sans-serif;
+    font-family: 'PP Neue Montreal';
     background-color: #FAEFE0BF;
     color: #121212de;
     padding: 20px;
+    padding-left: 30px;
     text-align: left;
 }
 
 header h1 a {
-    color: #121212; /* Dark grey text color, consistent with header */
-    text-decoration: none; /* Remove default underline */
-    transition: color 0.3s, text-decoration-color 0.3s; /* Smooth transition for color and underline color */
+    color: #121212;
+    /* Dark grey text color, consistent with header */
+    text-decoration: none;
+    /* Remove default underline */
+    transition: color 0.3s, text-decoration-color 0.3s;
+    /* Smooth transition for color and underline color */
+}
+
+header h1 a:hover {
+    color: rgba(47, 126, 45, 0.50);
+    /* Change text color to green on hover */
+    text-decoration: none;
+    /* Underline text on hover */
+    text-decoration-color: rgba(47, 126, 45, 0.80);
+    /* Specify a darker green for underline */
 }
 
 /* Main Content Area */
 main {
-    /* flex: 1; main 섹션에 유연성 부여 */
     background-color: #41635a40;
-    padding: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* overflow-y: auto; 내용이 많을 경우 스크롤 생성 */
 }
 
 /* Footer */
@@ -49,14 +60,22 @@ footer {
     background-color: #121212de;
     color: white;
     text-align: left;
-    padding: 10px;
-    margin-top: auto;
-    /* 자동으로 위 여백 생성 */
+    padding: 20px;
+    background-color: #000;
+    color: #FFF;
+    font-family: "PP Neue Montreal";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
     /*
     position: fixed;
     width: 100%;
     bottom: 0;
     */
+}
+
+footer p {
+    margin-left: 10px;
 }
 
 /* Responsive adjustments */
@@ -173,6 +192,7 @@ nav button:hover {
     /* 최소 높이 설정 */
     flex-grow: 1;
     /* 공간이 있을 때 늘어남 */
+    font-family: "PP Neue Montreal";
 }
 
 #emission-header {
@@ -266,13 +286,22 @@ nav button:hover {
     transition: width 0.5s ease-in-out;
     height: 100%;
 }
-
+/*
 .typical-ghg {
     background-color: rgb(223, 137, 57);
 }
 
 .green-ghg {
     background-color: rgb(223, 137, 57);
+}
+*/
+.module-title {
+    color: #000;
+    font-family: "PP Neue Montreal";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .module-info {
@@ -286,6 +315,8 @@ nav button:hover {
 }
 
 .module-type {
+    align-items: flex-start;
+    margin-top: 30px;
     margin-bottom: 20px;
     /* 제목과 세부사항 사이의 간격 */
     font-size: 20px;
@@ -317,10 +348,12 @@ nav button:hover {
     /* 각 옵션 그룹 위에 10px의 여백 추가 */
     margin-bottom: 10px;
     /* 각 옵션 그룹 아래에 10px의 여백 추가 */
+    font-family: "PP Neue Montreal";
 }
 
 .option-group select {
     margin-left: 30px;
+    font-family: "PP Neue Montreal";
 }
 
 select {
@@ -329,10 +362,39 @@ select {
     padding: 5px 7px;
     border: 1px solid #ccc;
     background-color: #e7e7e7;
+    /*DISABLE as it becomes Times New Roman font-family: "PP Neue Montreal"; */
+    font-weight: 600;
 }
 
 .calculator-buttons {
+    display: flex;
+    flex-direction: row; /* Organize buttons in a column */
+    align-items: center; /* Center the buttons within the div */
+    justify-content: flex-start;
+    margin-bottom: 300px;
     float: right;
+}
+
+.calculator-buttons button {
+    width: 80px; 
+    height: 30px; 
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    font-family: 'Inter', sans-serif; 
+    font-size: 12px; 
+    font-weight: 500; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin: 5px 0; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s; 
+}
+
+.calculator-buttons button:hover {
+    background-color:  rgba(47, 126, 45, 0.80);
 }
 
 .main-footer-buttons {
@@ -354,7 +416,6 @@ select {
     /* 버튼 배경색 설정 */
     color: black;
     /* 텍스트 색상을 검은색으로 설정 */
-    padding: 10px;
     /* 패딩 설정 */
     border: 1px solid black;
     /* 검은색 테두리 설정 */
@@ -368,6 +429,9 @@ select {
     /* 버튼 높이 고정 */
     text-align: center;
     /* 텍스트 중앙 정렬 */
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
 /* Styling the right column for GHG total */
@@ -410,3 +474,196 @@ select {
     display: none;
     /* 요소를 숨깁니다. */
 }
+
+/*other modules*/
+
+
+
+
+
+/* Test css for bar chart*/
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.bar {
+    height: 100%;
+    background-color: #76c7c0;
+    width: 0; /* Initial width is 0 */
+    transition: width 0.5s; /* Smooth transition for width change */
+}
+
+/* Container for all categories for HEATING AND COOLING */
+.category-container {
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: center;  
+    gap: 50px;  
+    max-width: 600px; 
+    margin: 0 auto;  
+    padding: 20px 0; 
+   padding-left: 42px;
+}
+
+
+.category-item {
+    flex: 1 1 45%;  
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center; 
+}
+
+.category-item img {
+    width: 100px;  
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.category-item p {
+    font-size: 16px;  
+    color: #333;  
+}
+
+/* Refrigerator Section */
+
+.RefrigeratorContainer {
+    width: 600px;
+    margin: 80px auto;
+    padding: 10px;
+
+}
+
+.refrigerator-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.refrigerator-row label {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.refrigerator-row select {
+    flex: 2;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+/* Cooking */
+
+.cooking {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    ;
+}
+
+.cooking-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cooking-row select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Appliannce Page */
+.appliance-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px;
+
+
+}
+
+.appliance {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+    border-radius: 8px; 
+}
+
+.appliance img {
+    width: 50px; /* Adjust as necessary */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.appliance h2 {
+    font-size: 15px; /* Appropriately sized headers */
+    color: #333; /* Dark color for text */
+    margin-bottom: 10px; /* Space below the header */
+}
+
+.appliance select {
+    width: 100%; /* Full width of the container */
+    margin-bottom: 10px; /* Space between dropdowns */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/*Food and Shopping */
+body {
+    font-family: Arial, sans-serif; /* Sets a clean, readable font */
+}
+
+.spending-form {
+    max-width: 730px; /* Adjust width as needed to match the design */
+    align-items: center; /* Centers items vertically */
+    justify-content: space-between; /* Distributes space between items */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 100px;
+}
+
+.spending-form label {
+    flex: 1; /* Allows the label to fill available space */
+    margin-right: 10px; /* Space between label and input */
+}
+
+.spending-form input[type="number"] {
+    width: 100px; /* Fixed width for the input */
+    padding: 8px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Subtle border around the input */
+    border-radius: 4px; /* Rounded corners for the input */
+}
+
+.spending-form button {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: orange; /* Bright orange background for visibility */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.spending-form button:hover {
+    background-color: darkorange; /* Darker orange on hover */
+}
+

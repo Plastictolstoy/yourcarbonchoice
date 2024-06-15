@@ -5,150 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Main Menu Styles */
-        .main-menu {
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .main-menu h2 {
-            text-align: left;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .button-container button {
-            background: linear-gradient(to bottom, #ffffff, #cbc8c8);
-            color: black;
-            border: 1px solid green;
-            padding: 10px 15px;
-            margin: 5px 0;
-            cursor: pointer;
-            font-size: 12px;
-            text-align: center;
-            width: 200px;
-            border-radius: 2px;
-            font-weight: bold;
-        }
-
-        .button-container button.disabled {
-            background: linear-gradient(to bottom, #ddd, #aaa);
-            color: #999;
-            cursor: not-allowed;
-        }
-
-        .sub-menu {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .sub-menu.active {
-            display: block;
-        }
-
-        .input-group {
-            margin: 20px 0;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .input-group small {
-            font-size: 14px;
-        }
-
-        .input-group input {
-            width: 300px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-left: 80px;
-            /* Add margin to the left */
-        }
-
-        .input-group select {
-            width: 200px;
-            padding: 10px;
-            border: 1px solid #b5e7b5;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .input-group .dropdown-wrapper {
-            display: flex;
-            gap: 20px;
-            /* Space between dropdowns */
-            margin-left: 80px;
-            /* Move the entire group of dropdowns to the right */
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            width: 320px;
-            /* Adjusted width */
-            padding-left: 80px;
-            /* Add padding to the left */
-        }
-
-        .button-group button {
-            width: 48%;
-            background-color: rgb(255, 153, 0);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        .button-group button img {
-            vertical-align: middle;
-            margin-right: 5px;
-            width: 16px;
-            /* Adjusted width */
-            height: 16px;
-            /* Adjusted height */
-        }
-
-        p {
-            font-size: 12px;
-            /* Reduce paragraph font size */
-            width: 30%;
-            /* Ensures the paragraph doesn't extend beyond other elements */
-            line-height: 1.5;
-            margin-left: 80px;
-            /* Match the left margin of other elements */
-        }
-
-        .single-dropdown {
-            margin-left: 80px;
-            /* Move the single dropdown to the right */
-        }
-    </style>
+    <link rel="stylesheet" href="footerbuttons.css">
 </head>
 
 <body>
+    <header>
+        <div class="header">
+            <img src="images/YourCarbonChoice-logo.png" alt="Your Carbon Choice Logo" />
+            <h1> Australian Green Calculator</h1>
+        </div>
+       
+    </header>
     <main>
         <div class="main-menu">
             <!--<h2>Main Menu</h2>-->
@@ -191,10 +58,10 @@
                     or other saved calculations.</p>
                 <div class="button-group">
                     <button onclick="showSubMenu('start-new')">
-                        <img src="Assets/cancel-icon.png" alt="Cancel"> Cancel
+                        <img src="images/cancel-icon.png" alt="Cancel"> Cancel
                     </button>
                     <button onclick="startCalculation()">
-                        <img src="Assets/done-icon.png" alt="Done"> Done
+                        <img src="images/done-icon.png" alt="Done"> Done
                     </button>
                 </div>
             </div>
@@ -209,15 +76,49 @@
                 <p>More text as required about calculation files.</p>
                 <div class="button-group">
                     <button onclick="showMainMenu()">
-                        <img src="Assets/cancel-icon.png" alt="Cancel"> Cancel
+                        <img src="images/cancel-icon.png" alt="Cancel"> Cancel
                     </button>
                     <button onclick="loadCalculation()">
-                        <img src="Assets/done-icon.png" alt="Done"> Done
+                        <img src="images/done-icon.png" alt="Done"> Done
                     </button>
                 </div>
             </div>
         </div>
     </main>
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h2>Lifecycles</h2>
+                <p>2/398 Smith Street<br>
+                Collingwood, VIC 3066<br>
+                Tel: +61 (03) 9417 1190<br>
+                office@lifecycles.com.au</p>
+
+            </div>
+            <div class="footer-column">
+                <h2>Business Hours</h2>
+                <p>Monday - Friday: 9:00AM — 5:00PM</p>
+            </div>
+            <div class="footer-column">
+                <h2>Get social</h2>
+                <p>
+                    <a href="https://www.facebook.com/lifecycle.strategies" class="social-icon" target="_blank">
+                        <img src="images/fb_logo.jpg" alt="Facebook">
+                    </a>
+                    
+                    
+                    <a href="https://twitter.com/?lang=en-au" class="social-icon" target="_blank">
+                        <img src="images/xlogo.png">
+                    </a>
+                    <a href="https://www.linkedin.com/company/lifecyclesaustralia" class="social-icon"target="_blank">
+                        <img src="images/linkedin_logo.jpg" alt="LinkedIn">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    
     <script>
         function showSubMenu(id) {
             // Hide all sub menus

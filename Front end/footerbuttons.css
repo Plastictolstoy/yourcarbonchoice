@@ -1,0 +1,368 @@
+        /* Main Menu Styles */
+        .header {
+            width: 100%; 
+            background-color: #FAEFE0BF; 
+            text-align: center; 
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .header img {
+            width: 40%; 
+            height: auto; 
+
+        }
+        .header h1 {
+            text-align: center;
+            font-family: 'Outfit';
+
+       
+        }
+        .main-menu {
+            width: 90%;
+            padding: 20px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #FAEFE0BF;
+            font-family: 'Outfit';
+            
+        }
+     
+
+        .main-menu h2 {
+            text-align: left;
+            font-size: 24px;
+    
+        }
+
+        .button-container {
+            font-family: 'Outfit';
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        
+        .button-container button {
+        color: black;
+        border: 2px solid black;
+        padding: 20px ;
+        margin: 10px 0;
+        cursor: pointer;
+        font-size: 20px; 
+        text-align: center;
+        width: 50%; 
+        font-family: 'Outfit';
+        border-radius: 2px;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s; 
+        
+        }
+
+        .button-container button:hover {
+        background-color: black;
+        color: white;
+        border-color: #FAEFE0BF; 
+        }
+
+        .button-container button.disabled {
+            background: linear-gradient(to bottom, #ddd, #aaa);
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .sub-menu {
+            display: none;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sub-menu.active {
+            display: block;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group small {
+            font-size: 14px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group input {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+            /* Add margin to the left */
+        }
+
+        .input-group select {
+            width: 200px;
+            padding: 20px;
+            border: 1px solid #FAEFE0BF;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s, color 0.3s; 
+        }
+        .input-group select:hover {
+            background-color: #ff8c00; /* Vibrant orange background */
+            color: white; /* White text to contrast with the orange */
+            cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+        }
+
+        .input-group .dropdown-wrapper {
+            display: flex;
+            text-align: center;
+            gap: 20px;
+            /* Space between dropdowns */
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-group {
+            display: flex; /* Ensures flexbox layout */
+            width: 320px; /* Adjust width as necessary */
+            margin: 0 auto; /* Centers the button group in the parent container */
+            justify-content: space-around; /* Distributes space around items */
+            align-items: center; /* Vertically aligns items in the middle */
+            padding: 10px 0; /* Adds padding to top and bottom for spacing */
+        }
+
+
+        .button-group button {
+            width: 48%;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            
+
+            
+        }
+
+        .button-group button img {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 16px;
+            /* Adjusted width */
+            height: 16px;
+            /* Adjusted height */
+        }
+
+        p {
+            font-size: 20px;
+            /* Reduce paragraph font size */
+            /* Ensures the paragraph doesn't extend beyond other elements */
+            line-height: 1.5;
+            /* Match the left margin of other elements */
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .site-footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px  ;
+}
+
+
+.footer-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 10px; /* Padding on sides to ensure content does not touch the edges */
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.footer-column {
+    border: 1px solid white;
+    width: 30%; /* Slightly reduced for padding adjustments */
+    box-sizing: border-box;
+    padding: 20px; /* Adds padding inside each column for spacing */
+    margin: 10px 0; /* Adds vertical spacing for better readability */
+}
+
+.footer-column h2, .footer-column p {
+    margin: 10px 0; /* Reduced margin for a cleaner look */
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    text-decoration: underline;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+}
+
+.footer-column h2 {
+    margin: 15px 0; /* Maintain the existing vertical margin */
+    text-align: center; /* Centers the text horizontally */
+}
+
+.footer-column p {
+    margin: 10px 0; /* Keep the paragraph margins consistent */
+    text-align: center; /* Optional: Aligns the text of the paragraphs to the center as well */
+}
+
+
+
+
+
+        /* Main Menu Styles */
+        .main-menu {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .main-menu h2 {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group input {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-left: 80px;
+            /* Add margin to the left */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 320px;
+            /* Adjusted width */
+            padding-left: 80px;
+            /* Add padding to the left */
+        }
+
+        .button-group button {
+            width: 48%;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .button-group button img {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 16px;
+            /* Adjusted width */
+            height: 16px;
+            /* Adjusted height */
+        }
+
+        /* Save Success Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
