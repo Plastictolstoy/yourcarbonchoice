@@ -7,6 +7,11 @@
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
+<style>
+        .cooking {
+        margin-top: -150px;
+    }
+</style>
 
 <body>
     <header>
@@ -75,7 +80,122 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <h2>Cooking</h2>
+                <img src="images/Cooking.svg" alt="Food Shopping Travel" style="width: 150px; height: 150px;">
+                <div class="cooking">
+                    <!-- Row 1 -->
+                    <div class="cooking-row">
+                        <select id="cooking1">
+                            <option value="none">None</option>
+                            <option value="electric_hotplate">Electric hotplate</option>
+                            <option value="induction_hotplate">Induction hotplate</option>
+                            <option value="gas_burner">Gas burner</option>
+                            <option value="wood_stove">Wood stove</option>
+                            <option value="wok_burner">Wok burner</option>
+                            <option value="standard_oven">Standard oven</option>
+                            <option value="fan_forced_oven">Fan forced oven</option>
+                            <option value="griller">Griller</option>
+                            <option value="bbq_portable">BBQ (portable)</option>
+                            <option value="bbq_built_in">BBQ (built-in)</option>
+                            <option value="other">Other</option>
+                            <option value="rangehood_fan">Rangehood fan</option>
+                            <option value="rangehood_gifts">Rangehood gifts</option>
+                        </select>
+                        <select id="know1">
+                            <option value="dont_know">Don't know</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+            
+                    <!-- Row 2 -->
+                    <div class="cooking-row">
+                        <select id="cooking2">
+                            <option value="none">None</option>
+                            <option value="electric_hotplate">Electric hotplate</option>
+                            <option value="induction_hotplate">Induction hotplate</option>
+                            <option value="gas_burner">Gas burner</option>
+                            <option value="wood_stove">Wood stove</option>
+                            <option value="wok_burner">Wok burner</option>
+                            <option value="standard_oven">Standard oven</option>
+                            <option value="fan_forced_oven">Fan forced oven</option>
+                            <option value="griller">Griller</option>
+                            <option value="bbq_portable">BBQ (portable)</option>
+                            <option value="bbq_built_in">BBQ (built-in)</option>
+                            <option value="other">Other</option>
+                            <option value="rangehood_fan">Rangehood fan</option>
+                            <option value="rangehood_gifts">Rangehood gifts</option>
+                        </select>
+                        <select id="know2">
+                            <option value="dont_know">Don't know</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+            
+                    <!-- Row 3 -->
+                    <div class="cooking-row">
+                        <select id="cooking3">
+                            <option value="none">None</option>
+                            <option value="microwave">Microwave</option>
+                            <option value="convection_microwave">Convection / Microwave</option>
+                            <option value="toaster">Toaster</option>
+                            <option value="food_processor">Food processor</option>
+                            <option value="electric_frypan">Electric frypan</option>
+                            <option value="bench_top_oven">Bench top oven</option>
+                            <option value="sandwich_maker">Sandwich maker</option>
+                            <option value="bread_maker">Bread-maker</option>
+                            <option value="crock_pot">Crock pot</option>
+                            <option value="deep_fryer">Deep fryer</option>
+                            <option value="rice_cooker">Rice cooker</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <select id="know3">
+                            <option value="dont_know">Don't know</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+            
+                    <!-- Row 4 -->
+                    <div class="cooking-row">
+                        <select id="cooking4">
+                            <option value="none">None</option>
+                            <option value="microwave">Microwave</option>
+                            <option value="convection_microwave">Convection / Microwave</option>
+                            <option value="toaster">Toaster</option>
+                            <option value="food_processor">Food processor</option>
+                            <option value="electric_frypan">Electric frypan</option>
+                            <option value="bench_top_oven">Bench top oven</option>
+                            <option value="sandwich_maker">Sandwich maker</option>
+                            <option value="bread_maker">Bread-maker</option>
+                            <option value="crock_pot">Crock pot</option>
+                            <option value="deep_fryer">Deep fryer</option>
+                            <option value="rice_cooker">Rice cooker</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <select id="know4">
+                            <option value="dont_know">Don't know</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>

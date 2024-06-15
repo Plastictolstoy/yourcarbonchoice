@@ -7,6 +7,17 @@
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
+<style>
+    .spending-form {
+        margin-top: -1px;
+        margin-left: 50px;
+    }
+    .quick-calculation {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+    }
+</style>
 
 <body>
     <header>
@@ -74,7 +85,25 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <h2>Food & Shopping</h2>
+                <div class="quick-calculation">
+                    <img src="images/foodshopping.png" alt="Food Shopping Travel" style="width: 100px; height: 100px;">
+                    <div class="spending-form">
+                        <label for="spending">How much do you spend each week on food and drink (both alcoholic and non-alcoholic)? $</label>
+                        <input type="number" id="spending" placeholder="0" min="0">
+                        <button onclick="submitSpending()">Done</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>

@@ -7,7 +7,11 @@
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
-
+<style>
+        .category-container {
+        margin-top: -180px;
+    }
+</style>
 <body>
     <header>
         <h1><a href="index.html">YourCarbonChoice</a></h1>
@@ -74,7 +78,44 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <h2>Heating & Cooling</h2>
+                <div class="quick-calculation">
+                    <img src="images/heating.png" alt="heating" style="width: 150px; height: 150px;">
+                    <div class="table-container">
+                        <div>
+                            <div class="category-container">
+                                <div class="category-item">
+                                    <img src="images/floor.png" alt="Floor & Roof" style="width: 150px; height: 150px;">
+                                    
+                                </div>
+                                <div class="category-item">
+                                    <img src="images/windows.png" alt="Windows" style="width: 150px; height: 150px;">
+                                    
+                                </div>
+                                <div class="category-item">
+                                    <img src="images/walls.png" alt="Walls" style="width: 150px; height: 150px;">
+                                
+                                </div>
+                                <div class="category-item">
+                                    <img src="images/airleakage.png" alt="Air Leakage" style="width: 150px; height: 150px;">
+                                    
+                                </div>
+                            </div>
+                            
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>

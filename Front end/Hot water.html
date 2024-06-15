@@ -75,7 +75,26 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <div class="transport-nav">
+                    <button id="HotWaterService" class="tablinks Hotwater">Hot Water Service</button>
+                    <button id="ClothesWashing" class="tablinks transport">Clothes Washing</button>
+                    <button id="Dishwaher" class="tablinks transport">Dishwaher</button>
+                    <button id="privateTransportButton" class="tablinks transport">Bathing</button>   
+                </div>
+                <h2>Hot Water</h2>
+                <div class="quick-calculation">
+                    <img src="images/hotwater.png" alt="hotwater" style="width: 130px; height: 130px;">
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>

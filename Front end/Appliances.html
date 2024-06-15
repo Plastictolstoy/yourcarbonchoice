@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .appliance-container {
+            margin-top: -30px;
+        }
+        .quick-calculation {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,7 +85,199 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <h2>Appliances</h2>
+                <div class="quick-calculation">
+                    <img src="images/Appliance.svg" alt="Appliance" style="width: 150px; height: 150px;">
+                    <div class="appliance-container">
+                        <!-- Computer 1 -->
+                        <div class="appliance">
+                            <img src="images/computer1.png" alt="Computer 1">
+                            <h2>COMPUTER1</h2>
+                            <select>
+                                <option>None</option>
+                                <option>Computer - Desktop with LCD monitor</option>
+                                <option>Computer - Desktop with older-style (CRT) monitor</option>
+                                <option>Computer - High Performance</option>
+                                <option>Computer - Small Laptop</option>
+                                <option>Computer - Large Laptop</option>
+                                <option>Computer - Modem/router</option>
+                                <option>Computer - Speakers</option>
+                                <option>External disk drive</option>
+                                <option>USB powered device</option>
+                            </select>
+                            <label>How many hours per day?</label>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                            </select>
+                        </div>
+
+                        <!-- Computer 2 -->
+                        <div class="appliance">
+                            <img src="images/computer1.png" alt="Computer 2">
+                            <h2>COMPUTER2 </h2>
+                            <select>
+                                <option>None</option>
+                                <option>Computer - Desktop with LCD monitor</option>
+                                <option>Computer - Desktop with older-style (CRT) monitor</option>
+                                <option>Computer - High Performance</option>
+                                <option>Computer - Small Laptop</option>
+                                <option>Computer - Large Laptop</option>
+                                <option>Computer - Modem/router</option>
+                                <option>Computer - Speakers</option>
+                                <option>External disk drive</option>
+                                <option>USB powered device</option>
+                            </select>
+                            <label>How many hours per day?</label>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                            </select>
+                        </div>
+
+                        <!-- Printer -->
+                        <div class="appliance">
+                            <img src="images/printer.png" alt="Printer">
+                            <h2>PRINTER</h2>
+                            <select>
+                                <option>None</option>
+                                <option>Printer - Impact</option>
+                                <option>Printer - Inkjet</option>
+                                <option>Printer - Laser</option>
+                                <option>Printer - Multifunctional device (print/copy/scan)</option>
+                                <option>Copier - Digital</option>
+                                <option>Copier - Inkjet</option>
+                                <option>Copier - Traditional</option>
+                                <option>Fax - Inkjet</option>
+                                <option>Fax - Laser/digital</option>
+                                <option>Fax - Thermal</option>
+                            </select>
+                            <label>How many hours per day?</label>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                            </select>
+                        </div>
+
+                        <!-- Game -->
+                        <div class="appliance">
+                            <img src="images/game.png" alt="Game Console">
+                            <h2>GAME</h2>
+                            <select>
+                                <option>None</option>
+                                <option>Games Unit - Efficient (e.g., Wii)</option>
+                                <option>Games Unit - Typical (e.g., Xbox)</option>
+                                <option>Games Unit - High Performance (e.g., Xbox 360, PlayStation 3)</option>
+                            </select>
+                            <label>How many hours per day?</label>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                            </select>
+                        </div>
+
+                        <!-- Additional Appliances -->
+                        <!-- Add more as needed -->
+
+                        <div id="DetailedTabContent" class="tabcontent">
+                            <!-- Detailed Section Content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>
@@ -86,7 +289,7 @@
 
     <!-- External Scripts -->
     <script src="../Backend/openinfo.js"></script> <!-- Script for info box functionality -->
-
+    <script src="global.js"></script>
 </body>
 <footer>
     <p>YourCarbonChoice © 2024</p>

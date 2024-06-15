@@ -7,7 +7,11 @@
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
 </head>
-
+<style>
+    .RefrigeratorContainer {
+        margin-top: -150px;
+    }
+</style>
 <body>
     <header>
         <h1><a href="index.html">YourCarbonChoice</a></h1>
@@ -74,7 +78,81 @@
             </div>
         </section>
         <section id="calculator">
-            <!-- 내용을 비워 두었습니다. -->
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <h2>Refrigerator</h2>
+                <div class="quick-calculation">
+                    <img src="images/Refrigerator.svg" alt="Appliance" style="width: 150px; height: 150px;">
+                    <div class="RefrigeratorContainer">
+                        <div class="refrigerator-row">
+                            <label for="appliance1">Appliance 1</label>
+                            <select id="appliance1">
+                                <option value="none">None</option>
+                                <option value="normal">Normal (compressor)</option>
+                                <option value="thermoelectric">Thermoelectric</option>
+                                <option value="lpg">LPG</option>
+                                <option value="gas">Gas</option>
+                                <option value="lpg_electric">LPG appliance running on electricity</option>
+                                <option value="gas_electric">Gas appliance running on electricity</option>
+                            </select>
+                            <select>
+                                <option value="one_door">One door fridge</option>
+                                <option value="two_door">Two door fridge</option>
+                                <option value="chest_freezer">Chest Freezer</option>
+                                <option value="upright_freezer">Upright Freezer</option>
+                                <option value="wine_chiller">Wine Chiller</option>
+                            </select>
+                        </div>
+                
+                        <div class="refrigerator-row">
+                            <label for="appliance2">Appliance 2</label>
+                            <select id="appliance2">
+                                <option value="none">None</option>
+                                <option value="normal">Normal (compressor)</option>
+                                <option value="thermoelectric">Thermoelectric</option>
+                                <option value="lpg">LPG</option>
+                                <option value="gas">Gas</option>
+                                <option value="lpg_electric">LPG appliance running on electricity</option>
+                                <option value="gas_electric">Gas appliance running on electricity</option>
+                            </select>
+                            <select>
+                                <option value="one_door">One door fridge</option>
+                                <option value="two_door">Two door fridge</option>
+                                <option value="chest_freezer">Chest Freezer</option>
+                                <option value="upright_freezer">Upright Freezer</option>
+                                <option value="wine_chiller">Wine Chiller</option>
+                            </select>
+                        </div>
+                
+                        <div class="refrigerator-row">
+                            <label for="appliance3">Appliance 3</label>
+                            <select id="appliance3">
+                                <option value="none">None</option>
+                                <option value="normal">Normal (compressor)</option>
+                                <option value="thermoelectric">Thermoelectric</option>
+                                <option value="lpg">LPG</option>
+                                <option value="gas">Gas</option>
+                                <option value="lpg_electric">LPG appliance running on electricity</option>
+                                <option value="gas_electric">Gas appliance running on electricity</option>
+                            </select>
+                            <select>
+                                <option value="one_door">One door fridge</option>
+                                <option value="two_door">Two door fridge</option>
+                                <option value="chest_freezer">Chest Freezer</option>
+                                <option value="upright_freezer">Upright Freezer</option>
+                                <option value="wine_chiller">Wine Chiller</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="DetailedTabContent" class="tabcontent">
+                <!-- Detailed Section Content -->
+            </div>
         </section>
         <div class="main-footer-buttons">
             <a href="Main menu.html"><button>Main Menu</button></a>
