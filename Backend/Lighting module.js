@@ -27,7 +27,7 @@ function calculateQuickEmissions() {
     totalEmissions += lightEmissionFactors[fluorescentCount] * fluorescentHours * fluorescentEmissionFactor;
 
     document.getElementById('total-emissions').innerText = totalEmissions.toFixed(2);
-    document.getElementById('emission-gauge').value = totalEmissions;
+    updateghg1bar(); // Update the green bar based on the total emissions value
 }
 
 /// Detailed tab calculations
@@ -81,6 +81,7 @@ function addLight() {
 function removeLight(id) {
     const row = document.querySelector(`#${id}-ghgs`).closest('tr');
     row.remove();
+    updateTotalDetailedEmissions();
 }
 
 function toggleInput(id) {
@@ -123,12 +124,22 @@ function calculateDetailedEmissions(id) {
     const totalEmissions = number * watts / 1000 * DimlampFactor * (Slamphrs + Wlamphrs) * emissionFactor * 3.6;
 
     document.getElementById(`${id}-ghgs`).innerText = totalEmissions.toFixed(2) + " kg CO2-eq/year";
+    updateTotalDetailedEmissions();
 }
 
-// add event listener after loading DOM
+function updateTotalDetailedEmissions() {
+    const ghgCells = document.querySelectorAll('#lighting-table-body td.ghg-cell');
+    let totalGHG = 0;
+
+    ghgCells.forEach(cell => {
+        totalGHG += parseFloat(cell.textContent);
+    });
+
+    document.getElementById('total-emissions').innerText = totalGHG.toFixed(2);
+    updateghg1bar(); // Update the green bar based on the total emissions value
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-        const emissionGauge = document.getElementById('emission-gauge');
-    const totalEmissions = document.getElementById('total-emissions');
     document.getElementsByClassName('tablinks')[0].click();
     addLight(); // Add initial light row for detailed tab
 
@@ -158,10 +169,17 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-// Example function to update GHG value
-function updateGHG(value) {
-    totalEmissions.textContent = value.toFixed(2);
-    const percentage = (value / 10) * 100;
-    emissionGauge.style.width = percentage + '%';
-    emissionGauge.setAttribute('data-ghg', value.toFixed(2) + ' Tonnes GHG');
+// Function to update the green bar based on the totalEmissions value
+function updateghg1bar() {
+    const ghg1bar = document.getElementById("ghg1bar");
+    const bartooltip = document.getElementById("bartooltip");
+    const totalEmissions = parseFloat(document.getElementById('total-emissions').innerText);
+
+    if (!isNaN(totalEmissions)) {
+        const percentage = (totalEmissions / 10) * 100;
+        const limitedPercentage = Math.min(percentage, 100);
+
+        ghg1bar.style.width = limitedPercentage + "%"; // Update the width of the green bar
+        bartooltip.textContent = totalEmissions.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
+    }
 }

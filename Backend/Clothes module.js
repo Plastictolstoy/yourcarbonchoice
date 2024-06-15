@@ -32,10 +32,7 @@ function calculateQuickEmissions() {
     // Update total emissions display
     document.getElementById('total-emissions').innerText = totalEmissions.toFixed(3);
 
-    // Update the gauge
-    const emissionGauge = document.getElementById('emission-gauge');
-    emissionGauge.value = totalEmissions; // Assuming max emissions can be 100 kg CO2-eq/year for demonstration
-    emissionGauge.title = totalEmissions.toFixed(3) + " kg CO2-eq/year";
+    updateghg1bar(totalEmissions); // Update the GHG bar with the calculated emissions
 }
 
 // Detail calculation
@@ -110,7 +107,10 @@ function addClothesDryer() {
 
 function removeRow(id) {
     const row = document.querySelector(`#${id}-ghgs`).closest('tr');
-    row.remove();
+    if (row) {
+        row.remove();
+    }
+    updateTotalEmissions();
 }
 
 function toggleInput(id) {
@@ -181,6 +181,19 @@ function calculateDetailEmissions(id) {
     const Cdghg = (WU + SU) * 3.6 * Cdef * CDL * Cddry * CDP * Ghelect * CDF;
 
     document.getElementById(`${id}-ghgs`).innerText = Cdghg.toFixed(2) + " kg CO2-eq/year";
+    updateTotalEmissions(); // Update the total emissions after each detailed calculation
+    updateghg1bar(); // Update the GHG bar with the calculated emissions
+}
+
+function updateTotalEmissions() {
+    const ghgCells = document.querySelectorAll('#dryer-table-body td.ghg-cell');
+    let totalGHG = 0;
+
+    ghgCells.forEach(cell => {
+        totalGHG += parseFloat(cell.textContent) || 0;
+    });
+
+    document.getElementById('total-emissions').innerText = totalGHG.toFixed(2);
 }
 
 // Tab switching function
@@ -198,6 +211,21 @@ function openTab(evt, tabName) {
 
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+// Function to update the green bar based on the totalAirGHG value
+function updateghg1bar() {
+    const ghg1bar = document.getElementById("ghg1bar");
+    const bartooltip = document.getElementById("bartooltip");
+    const totalEmissions = parseFloat(document.getElementById('total-emissions').innerText);
+
+    if (!isNaN(totalEmissions)) {
+        const percentage = (totalEmissions / 10000) * 100;
+        const limitedPercentage = Math.min(percentage, 100);
+
+        ghg1bar.style.width = limitedPercentage + "%"; // Update the width of the green bar
+        bartooltip.textContent = totalEmissions.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,3 +1,4 @@
+// Quick View GHG Calculation Constants
 const quickViewFactors = {
     typicalDomestic: {
         fa: 1,
@@ -66,7 +67,14 @@ function calculateQuickGHG() {
     const totalQuickGHG = typicalDomesticGHG + sydneyPerthGHG + typicalAusAsiaGHG + typicalAusUsaEuropeGHG;
 
     document.getElementById('total-emissions').innerText = totalQuickGHG.toFixed(2);
-    document.getElementById('emission-gauge').value = totalQuickGHG;
+
+    // Check if the emission-gauge element exists before setting its value
+    const emissionGauge = document.getElementById('emission-gauge');
+    if (emissionGauge) {
+        emissionGauge.value = totalQuickGHG;
+    }
+
+    updateghg1bar(); // Update the green bar based on the total emissions value
 }
 
 // Function to calculate GHG for a single flight
@@ -290,6 +298,9 @@ function updateTotalDetailedGHG() {
     // Update the global variable with the new value
     ghgAirDetailedTotal = totalGHG;
 
+    // Log to the console
+    console.log('Total Detailed AirTravel GHG:', ghgAirDetailedTotal.toFixed(2));
+
     // Recalculate the total of both values whenever this function is called
     totalAirTravelGHG();
 }
@@ -297,8 +308,31 @@ function updateTotalDetailedGHG() {
 // Function to calculate and update the total GHG
 function totalAirTravelGHG() {
     const totalGHG = ghgAirQuickTotal + ghgAirDetailedTotal;
+    console.log('Total Air Travel GHG:', totalGHG.toFixed(2));
     document.getElementById('total-emissions').innerText = totalGHG.toFixed(2);
-    document.getElementById('emission-gauge').value = totalGHG;
+
+    // Check if the emission-gauge element exists before setting its value
+    const emissionGauge = document.getElementById('emission-gauge');
+    if (emissionGauge) {
+        emissionGauge.value = totalGHG;
+    }
+
+    updateghg1bar(); // Update the green bar based on the total emissions value
+}
+
+// Function to update the green bar based on the totalAirGHG value
+function updateghg1bar() {
+    const ghg1bar = document.getElementById("ghg1bar");
+    const bartooltip = document.getElementById("bartooltip");
+    const totalEmissions = parseFloat(document.getElementById('total-emissions').innerText);
+
+    if (!isNaN(totalEmissions)) {
+        const percentage = (totalEmissions / 10000) * 100;
+        const limitedPercentage = Math.min(percentage, 100);
+
+        ghg1bar.style.width = limitedPercentage + "%"; // Update the width of the green bar
+        bartooltip.textContent = totalEmissions.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
+    }
 }
 
 // Event listener for DOMContentLoaded to initialize the first tab and add event listeners
@@ -399,62 +433,3 @@ document.querySelectorAll('#flight-table-body input, #flight-table-body select')
         calculateDetailedGHG(rowId);
     });
 });
-
-// Initial function calls to set up the page
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementsByClassName('tablinks')[0].click();
-    addFlight(); // Add initial flight row for detailed tab
-
-    document.getElementById('typicalDomestic').addEventListener('change', calculateQuickGHG);
-    document.getElementById('sydneyPerth').addEventListener('change', calculateQuickGHG);
-    document.getElementById('typicalAusAsia').addEventListener('change', calculateQuickGHG);
-    document.getElementById('typicalAusUsaEurope').addEventListener('change', calculateQuickGHG);
-});
-
-// Function to switch tabs
-function openTab(evt, tabName) {
-    const tabcontent = document.getElementsByClassName("tabcontent");
-    const tablinks = document.getElementsByClassName("tablinks");
-
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Utility function to handle showing/hiding input fields and updating GHG calculations
-function toggleInput(id) {
-    const span = document.querySelector(`#${id}-td span`);
-    const input = document.getElementById(id);
-
-    document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-    document.querySelector(`#${id}-td`).classList.add('active');
-
-    if (input.classList.contains('hidden-input')) {
-        input.classList.remove('hidden-input');
-        span.style.display = 'none';
-        input.style.display = 'block';
-        input.focus();
-    }
-
-    input.addEventListener('blur', () => {
-        input.classList.add('hidden-input');
-        span.style.display = 'block';
-        input.style.display = 'none';
-        span.innerText = input.value;
-        calculateDetailedGHG(id.split('-')[0]);
-    });
-}
-
-// Function to remove a flight row in Detailed View
-function removeFlight(id) {
-    const row = document.querySelector(`#${id}-ghgs`).closest('tr');
-    row.remove();
-    updateTotalDetailedGHG();
-}
