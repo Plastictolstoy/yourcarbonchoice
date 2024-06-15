@@ -5,20 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    .quick-calculation {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 20px;
+    }
+
+    .item {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .quick-calculation img {
+        max-width: 150px;
+        align-self: start;
+    }
+
+
+    .dropdown-container label {
+        margin-right: 10px;
+        min-width: 150px;
+    }
+
+    .dropdown-container select,
+    .dropdown-container input {
+        margin-right: 20px;
+    }
+
+    #emission-gauge {
+        width: 100%;
+        height: 30px;
+    }
+
+    #emission-gauge:hover::after {
+        content: attr(title);
+        position: absolute;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .ghg-cell {
+        background-color: green;
+        color: white;
+    }
+
+    .hidden-input {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
 
 <body>
     <header>
-        <h1><a href="index.html">YourCarbonChoice</a></h1>
+        <h1>YourCarbonChoice</h1>
     </header>
     <main>
         <!-- Navigation Section Start -->
         <nav>
-            <!-- Navigation links to different pages -->
-            <a href="Transport.html"><button class="active">Transport <img src="images/transport.png"
+            <a href="Transport.html"><button class="active"></buttonclass>Transport <img src="images/transport.png"
                         alt="Transport Icon"></button></a>
-            <a href="AirTravel.html"><button> Air Travel <img src="images/airplane.png" alt="Air Travel Icon">
+            <a href="AirTravel.html"><button>Air Travel <img src="images/airplane.png"
+                        alt="Air Travel Icon">
                 </button></a>
             <a href="Heating & Cooling.html"> <button>Heating &amp;<br>Cooling<img src="images/heating.png"
                         alt="Heating Icon" class="heating-cooling-icon"></button></a>
@@ -31,9 +108,9 @@
             <a href="Lighting.html"><button>Lighting <img src="images/lighting.png" alt="Lighting Icon"></button></a>
             <a href="Refrigerator.html"><button>Refrigerator <img src="images/Refrigerator.svg"
                         alt="Refrigerator Icon"></button></a>
-            <a href="Cooking.html"><button>Cooking <img src="images/Cooking.svg" alt="Cooking Icon"></button></a>
-            <a href="Appliances.html"><button>Appliances <img src="images/Appliance.svg"
-                        alt="Appliance Icon"></button></a>
+            <a href="Cooking.html"><button>Cooking <img src="images/Cooking.svg" alt="Cooking Icon"> </button></a>
+            <a href="Appliances.html"><button>Appliances <img src="images/Appliance.svg" alt="Appliance Icon">
+                </button></a>
             <a href="Food & Shopping.html"><button>Food &amp;<br> Shopping <img src="images/foodshopping.png"
                         alt="Food Shopping Icon" class="food-icon"></button></a>
             <a href="Waste.html"><button>Waste <img src="images/waste.png" alt="Waste Icon"></button></a>
@@ -57,107 +134,133 @@
                 </div>
                 <div class="green-line"></div>
                 <div class="ghg-display">
-                    <span>My household's GHG emissions:</span>
-                    <div class="ghg-bar my-ghg"></div>
+                    <span class="ghg1">My household's GHG emissions:</span>
+                    <div class="ghg1bar" id="ghg1bar"></div>
+                    <div class="bartooltip" id="bartooltip"></div>
                 </div>
                 <div class="ghg-display">
-                    <span>A typical household's GHG emissions:</span>
-                    <div class="ghg-bar typical-ghg"></div>
+                    <span class="ghg2">A typical household's GHG emissions:</span>
+                    <div class="ghg2bar" id="ghg2bar"></div>
                 </div>
                 <div class="ghg-display">
-                    <span>A green household's GHG emissions:</span>
-                    <div class="ghg-bar green-ghg"></div>
+                    <span class="ghg3">A green household's GHG emissions:</span>
+                    <div class="ghg3bar" id="ghg3bar"></div>
                 </div>
             </div>
             <div class="ghg-total">
-                <div id="totalGHG" class="ghg-number">0.00</div>
+                <div id="total-emissions" class="ghg-number">0.00</div>
                 <span class="ghg">Tonnes GHG</span>
             </div>
         </section>
         <section id="calculator">
-            <div class="calculator-type">
-                <button onclick="toggleOption('cars')">Cars</button>
-                <button onclick="toggleOption('public')">Public Transport</button>
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detailed</button>
             </div>
-            <div id="calculator-options">
-                <div class="module-info">
-                    <div class="module-type">Transport</div>
-                    <div class="module-details">
-                        <img src="Assets/transport.png" alt="Air Travel" style="width: 100px; height: 100px;">
-                        <div class="ghg-number">0.00t</div>
-                    </div>
-                </div>
-                <div>
-                    </br>
-                    </br>
-                    <div id="cars" class="option-group cars">
-                        <label>What type of car do you have?</label>
-                        <select id="car-type">
-                            <option value="light-car">Light car</option>
-                            <option value="small-car">Small car</option>
-                            <option value="medium-car">Medium car</option>
-                            <option value="large-car">Large car</option>
-                            <option value="very-large-car">Very large car</option>
-                            <option value="people-mover">People Mover</option>
-                            <option value="small-4wd">Small 4WD</option>
-                            <option value="medium-4wd">Medium 4WD</option>
-                            <option value="large-4wd">Large 4WD</option>
-                            <option value="van">Van</option>
-                            <option value="utility-6cyl">Utility (6 cyl)</option>
-                            <option value="utility-8cyl">Utility (8 cyl)</option>
-                            <option value="light-truck">Light truck</option>
-                            <option value="motor-scooter">Motor scooter</option>
-                            <option value="motorcycle">Motorcycle</option>
-                            <option value="electric-bike">Electric bike</option>
-                        </select>
-                        <label for="vkms">Annual Kilometers Driven:</label>
-                        <input type="number" id="vkms" value="15000">
-                        <label for="fuel-type">Fuel Type:</label>
-                        <select id="fuel-type">
-                            <option value="petrol">Petrol</option>
-                            <option value="diesel">Diesel</option>
-                            <option value="lpg">LPG</option>
-                            <option value="cng">CNG</option>
-                            <option value="electric">Electric</option>
-                        </select>
-                        <label for="yearvm">Vehicle Manufacture Year:</label>
-                        <input type="number" id="yearvm" value="2000">
-                        <button id="calculate-car-button">Calculate Car Emissions</button>
-                    </div>
 
-                    <div id="public" class="option-group public hidden">
-                        <label>What type of public transport do you take most often?</label>
-                        <select id="public-transport-type">
-                            <option value="urban-train-6car">Urban train (6 car)</option>
-                            <option value="double-decker-urban-train-8car">Double decker urban train (8 car)</option>
-                            <option value="underground-urban-train-4-6car">Under-ground urban train (4-6 car)</option>
-                            <option value="outer-urban-train-6car">Outer urban train (6 car)(up to 130km/h)</option>
-                            <option value="regional-train-3car">Regional train (3 car)(up to 130km/h)</option>
-                            <option value="high-speed-intercity-train-130-200kmh">High speed intercity train
-                                (130-200km/h)</option>
-                            <option value="very-high-speed-train-200-300kmh">Very high speed train (200-300km/h)
-                            </option>
-                            <option value="suburban-diesel-train-2car">Suburban diesel train (2 car)</option>
-                            <option value="regional-diesel-train-2car">Regional diesel train (2 car)(up to 150km/h)
-                            </option>
-                            <option value="interstate-high-speed-diesel-train-7car">Interstate high speed diesel train
-                                (7 car)(130-200km/h)</option>
-                            <option value="old-melbourne-tram">Old Melbourne tram</option>
-                            <option value="modern-64seat-tram">Modern 64 seat tram</option>
-                            <option value="modern-94seat-light-rail-or-tram">Modern 94 seat light rail or tram</option>
-                            <option value="suburban-bus">Suburban bus</option>
-                            <option value="intercity-bus">Intercity bus</option>
-                        </select>
-                        <label for="trip-distance">Typical Trip Distance (km):</label>
-                        <input type="number" id="trip-distance" value="20">
-                        <label for="trips-per-week">Number of Trips per Week:</label>
-                        <input type="number" id="trips-per-week" value="10">
-                        <button id="calculate-public-button">Calculate Public Transport Emissions</button>
+            <div id="Quick" class="tabcontent">
+                <div class="tab">
+                    <button class="subtablinks" onclick="toggleOption('cars')">Cars</button>
+                    <button class="subtablinks" onclick="toggleOption('public')">Public Transport</button>
+                </div>
+                <h2>Transport</h2>
+                <div id="cars" class="quick-calculation">
+                    <img src="Assets/private.png" alt="Car">
+                    <div>
+                        <div class="dropdown-container">
+                            <label for="car-type">What type of car do you have?</label>
+                            <select id="car-type">
+                                <option value="light-car">Light car</option>
+                                <option value="small-car">Small car</option>
+                                <option value="medium-car">Medium car</option>
+                                <option value="large-car">Large car</option>
+                                <option value="very-large-car">Very large car</option>
+                                <option value="people-mover">People Mover</option>
+                                <option value="small-4wd">Small 4WD</option>
+                                <option value="medium-4wd">Medium 4WD</option>
+                                <option value="large-4wd">Large 4WD</option>
+                                <option value="van">Van</option>
+                                <option value="utility-6cyl">Utility (6 cyl)</option>
+                                <option value="utility-8cyl">Utility (8 cyl)</option>
+                                <option value="light-truck">Light truck</option>
+                                <option value="motor-scooter">Motor scooter</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="electric-bike">Electric bike</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <label for="vkms">Annual Kilometers Driven:</label>
+                            <input type="number" id="vkms" value="15000">
+                        </div>
+                        <div class="dropdown-container">
+                            <label for="fuel-type">Fuel Type:</label>
+                            <select id="fuel-type">
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="lpg">LPG</option>
+                                <option value="cng">CNG</option>
+                                <option value="electric">Electric</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <label for="yearvm">Vehicle Manufacture Year:</label>
+                            <input type="number" id="yearvm" value="2000">
+                        </div>
+                    </div>
+                </div>
+                <div id="public" class="quick-calculation hidden">
+                    <div class="item">
+                        <img src="Assets/public.png" alt="Public Transport">
+                        <div>
+                            <div class="dropdown-container">
+                                <label for="public-transport-type">What type of public transport do you take most
+                                    often?</label>
+                                <select id="public-transport-type">
+                                    <option value="urban-train-6car">Urban train (6 car)</option>
+                                    <option value="double-decker-urban-train-8car">Double decker urban train (8 car)
+                                    </option>
+                                    <option value="underground-urban-train-4-6car">Under-ground urban train (4-6 car)
+                                    </option>
+                                    <option value="outer-urban-train-6car">Outer urban train (6 car)(up to 130km/h)
+                                    </option>
+                                    <option value="regional-train-3car">Regional train (3 car)(up to 130km/h)</option>
+                                    <option value="high-speed-intercity-train-130-200kmh">High speed intercity train
+                                        (130-200km/h)</option>
+                                    <option value="very-high-speed-train-200-300kmh">Very high speed train (200-300km/h)
+                                    </option>
+                                    <option value="suburban-diesel-train-2car">Suburban diesel train (2 car)</option>
+                                    <option value="regional-diesel-train-2car">Regional diesel train (2 car)(up to
+                                        150km/h)</option>
+                                    <option value="interstate-high-speed-diesel-train-7car">Interstate high speed diesel
+                                        train (7 car)(130-200km/h)</option>
+                                    <option value="old-melbourne-tram">Old Melbourne tram</option>
+                                    <option value="modern-64seat-tram">Modern 64 seat tram</option>
+                                    <option value="modern-94seat-light-rail-or-tram">Modern 94 seat light rail or tram
+                                    </option>
+                                    <option value="suburban-bus">Suburban bus</option>
+                                    <option value="intercity-bus">Intercity bus</option>
+                                </select>
+                            </div>
+                            <div class="dropdown-container">
+                                <label for="trip-distance">Typical Trip Distance (km):</label>
+                                <input type="number" id="trip-distance" value="20">
+                            </div>
+                            <div class="dropdown-container">
+                                <label for="trips-per-week">Number of Trips per Week:</label>
+                                <input type="number" id="trips-per-week" value="10">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div id="Detailed" class="tabcontent">
-                <div class="table-container">
+                <div class="tab">
+                    <button class="subtablinks" onclick="toggleOption('cars-detail')">Cars</button>
+                    <button class="subtablinks" onclick="toggleOption('public-detail')">Public Transport</button>
+                </div>
+                <div id="cars-detail" class="table-container hidden">
+                    <h2>Cars detailed calculations</h2>
                     <table border="1">
                         <thead>
                             <tr>
@@ -179,6 +282,7 @@
                 </div>
 
                 <div id="public-detail" class="table-container hidden">
+                    <h2>Public detailed calculations</h2>
                     <table border="1">
                         <thead>
                             <tr>
@@ -210,11 +314,9 @@
             <a href="report.html"><button>Report</button></a>
         </div>
     </main>
-
     <!-- External Scripts -->
+    <script src="../Backend/openinfo.js"></script>
     <script src="../Backend/Transport module.js"></script>
-    <script src="../Backend/openinfo.js"></script> <!-- Script for info box functionality -->
-
 </body>
 <footer>
     <p>YourCarbonChoice © 2024</p>

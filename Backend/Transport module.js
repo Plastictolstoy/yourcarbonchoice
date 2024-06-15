@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const emissions = calculateCarEmissions(vehicleType, vkms, fuelType, yearvm);
         document.getElementById("total-emissions").innerText = emissions;
-        document.getElementById("emission-gauge").value = emissions;
+        updateghg1bar(emissions); // Update the GHG bar with the calculated emissions
     }
 
     document.getElementById("car-type").addEventListener("change", updateCarEmissions);
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const emissions = calculatePublicTransportEmissions(ptType, tripDistance, tripsPerWeek);
         document.getElementById("total-emissions").innerText = emissions;
-        document.getElementById("emission-gauge").value = emissions;
+        updateghg1bar(emissions); // Update the GHG bar with the calculated emissions
     }
 
     document.getElementById("public-transport-type").addEventListener("change", updatePublicTransportEmissions);
@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const tableBody = document.getElementById('cars-table-body');
         const id = `C${carCount++}`;
         const row = document.createElement('tr');
-
         row.innerHTML = `
         <td><button onclick="removeCar('${id}')">X</button></td>
         <td id="${id}-ghgs" class="ghg-cell">0.00 kg CO2-eq/year</td>
@@ -154,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </select></td>
         <td onclick="toggleInput('${id}-other')" id="${id}-other-td"><span>0</span><input type="text" id="${id}-other" class="hidden-input" min="0" value="0"></td>
     `;
-
         tableBody.appendChild(row);
 
         const inputs = row.querySelectorAll('input, select');
@@ -163,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const span = document.querySelector(`#${input.id}-td span`);
                 span.innerText = input.tagName === 'SELECT' ? input.options[input.selectedIndex].text : input.value;
                 calculateDetailedCarEmissions(id);
+                updateTotalEmissions();
             });
         });
     }
@@ -170,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function removeCar(id) {
         const row = document.querySelector(`#${id}-ghgs`).closest('tr');
         row.remove();
+        updateTotalEmissions();
     }
 
     function calculateDetailedCarEmissions(id) {
@@ -200,91 +200,87 @@ document.addEventListener("DOMContentLoaded", function () {
         const fuel_consumption = vehicle.fuelcfin * vserv * vagefact;
         const annual_energy_consumption = (vkms / 100) * fuel_consumption * fuel.energyDensity;
 
-        // Air conditioning related calculations
         let acenergy = 0, acleak = 0, acmass = 0;
         if (acfitted) {
-            acenergy = 200; // Example value: Energy used by air conditioning
-            acleak = 0.5; // Example value: Refrigerant leaks
-            acmass = 30; // Example value: Mass of air conditioning unit
+            acenergy = 200;
+            acleak = 0.5;
+            acmass = 30;
         }
 
         const total_energy_consumption = annual_energy_consumption + acenergy;
-        const annual_ghg_emissions = total_energy_consumption * fuel.emissionFactor + acleak * 1300; // 1300 is GWPac (Global Warming Potential)
+        const annual_ghg_emissions = total_energy_consumption * fuel.emissionFactor + acleak * 1300;
 
         document.getElementById(`${id}-ghgs`).innerText = annual_ghg_emissions.toFixed(2) + " kg CO2-eq/year";
     }
 
-    // Functions to add and remove public transport entries
     let publicCount = 1;
 
     function addPublicTransport() {
         const tableBody = document.getElementById('public-table-body');
         const id = `P${publicCount++}`;
         const row = document.createElement('tr');
-
         row.innerHTML = `
-            <td><button onclick="removePublicTransport('${id}')">X</button></td>
-            <td id="${id}-ghgs" class="ghg-cell">0.00 kg CO2-eq/year</td>
-            <td onclick="toggleInput('${id}-id')" id="${id}-id-td"><span>${id}</span><input type="text" id="${id}-id" class="hidden-input"></td>
-            <td onclick="toggleInput('${id}-type')" id="${id}-type-td"><span>Urban train</span><select id="${id}-type" class="hidden-input">
-                <option value="urban-train-6car">Urban train</option>
-                <option value="double-decker-urban-train-8car">Double decker urban train</option>
-                <option value="underground-urban-train-4-6car">Under-ground urban train</option>
-                <option value="outer-urban-train-6car">Outer urban train</option>
-                <option value="regional-train-3car">Regional train</option>
-                <option value="high-speed-intercity-train-130-200kmh">High speed intercity train</option>
-                <option value="very-high-speed-train-200-300kmh">Very high speed train</option>
-                <option value="suburban-diesel-train-2car">Suburban diesel train</option>
-                <option value="regional-diesel-train-2car">Regional diesel train</option>
-                <option value="interstate-high-speed-diesel-train-7car">Interstate high speed diesel train</option>
-                <option value="old-melbourne-tram">Older melbourne tram</option>
-                <option value="modern-64seat-tram">Modern 64 seat tram</option>
-                <option value="modern-94seat-light-rail-or-tram">Modern 94 seat light rail or tram</option>
-                <option value="suburban-bus">Suburban bus</option>
-                <option value="intercity-bus">Intercity bus</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-trips')" id="${id}-trips-td"><span>Very few</span><select id="${id}-trips" class="hidden-input">
-                <option value="1">Very few</option>
-                <option value="5">Daily</option>
-                <option value="10">To and from work/school</option>
-                <option value="20">Often</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-distance')" id="${id}-distance-td"><span>Short trip</span><select id="${id}-distance" class="hidden-input">
-                <option value="5">Short trip (5km)</option>
-                <option value="15">Medium trip (15km)</option>
-                <option value="15">Typical</option>
-                <option value="20">Suburban trip (20km)</option>
-                <option value="50">Short intercity trip< (50km)/option>
-                <option value="200">Long intercity trip (200km)</option>
-                <option value="1000">Interstate trip (1000km)</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-stops')" id="${id}-stops-td"><span>0</span><input type="number" id="${id}-stops" class="hidden-input" value="0"></td>
-            <td onclick="toggleInput('${id}-speed')" id="${id}-speed-td"><span>0</span><input type="number" id="${id}-speed" class="hidden-input" value="0"></td>
-            <td onclick="toggleInput('${id}-energy')" id="${id}-energy-td"><span>Normal</span><select id="${id}-energy" class="hidden-input">
-                <option value="normal">Normal</option>
-                <option value="25">25% more efficient</option>
-                <option value="50">50% more efficient</option>
-                <option value="custom">Custom</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-occupancy')" id="${id}-occupancy-td"><span>Typical</span><select id="${id}-occupancy" class="hidden-input">
-                <option value="all-seats-occupied">All seats occupied</option>
-                <option value="full">Full</option>
-                <option value="commuting">Commuting</option>
-                <option value="typical">Typical</option>
-                <option value="low-occupancy">Low occupancy</option>
-                <option value="custom">Custom</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-percentGreenEnergy')" id="${id}-percentGreenEnergy-td"><span>0</span><input type="number" id="${id}-percentGreenEnergy" class="hidden-input" value="0"></td>
-            <td onclick="toggleInput('${id}-energyRecoveryFactor')" id="${id}-energyRecoveryFactor-td"><span>Normal</span><select id="${id}-energyRecoveryFactor" class="hidden-input">
-                <option value="normal">Normal</option>
-                <option value="none">None</option>
-                <option value="low">Low</option>
-                <option value="very-good">Very good</option>
-                <option value="excellent">Excellent</option>
-            </select></td>
-            <td onclick="toggleInput('${id}-dragFactor')" id="${id}-dragFactor-td"><span>0</span><input type="number" id="${id}-dragFactor" class="hidden-input" value="0"></td>
-        `;
-
+        <td><button onclick="removePublicTransport('${id}')">X</button></td>
+        <td id="${id}-ghgs" class="ghg-cell">0.00 kg CO2-eq/year</td>
+        <td onclick="toggleInput('${id}-id')" id="${id}-id-td"><span>${id}</span><input type="text" id="${id}-id" class="hidden-input"></td>
+        <td onclick="toggleInput('${id}-type')" id="${id}-type-td"><span>Urban train</span><select id="${id}-type" class="hidden-input">
+            <option value="urban-train-6car">Urban train</option>
+            <option value="double-decker-urban-train-8car">Double-decker urban train</option>
+            <option value="underground-urban-train-4-6car">Underground urban train</option>
+            <option value="outer-urban-train-6car">Outer urban train</option>
+            <option value="regional-train-3car">Regional train</option>
+            <option value="high-speed-intercity-train-130-200kmh">High-speed intercity train</option>
+            <option value="very-high-speed-train-200-300kmh">Very high-speed train</option>
+            <option value="suburban-diesel-train-2car">Suburban diesel train</option>
+            <option value="regional-diesel-train-2car">Regional diesel train</option>
+            <option value="interstate-high-speed-diesel-train-7car">Interstate high-speed diesel train</option>
+            <option value="old-melbourne-tram">Old Melbourne tram</option>
+            <option value="modern-64seat-tram">Modern 64-seat tram</option>
+            <option value="modern-94seat-light-rail-or-tram">Modern 94-seat light rail or tram</option>
+            <option value="suburban-bus">Suburban bus</option>
+            <option value="intercity-bus">Intercity bus</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-trips')" id="${id}-trips-td"><span>Very few</span><select id="${id}-trips" class="hidden-input">
+            <option value="1">Very few</option>
+            <option value="5">Daily</option>
+            <option value="10">To and from work/school</option>
+            <option value="20">Often</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-distance')" id="${id}-distance-td"><span>Short trip</span><select id="${id}-distance" class="hidden-input">
+            <option value="5">Short trip (5km)</option>
+            <option value="15">Medium trip (15km)</option>
+            <option value="15">Typical</option>
+            <option value="20">Suburban trip (20km)</option>
+            <option value="50">Short intercity trip (50km)</option>
+            <option value="200">Long intercity trip (200km)</option>
+            <option value="1000">Interstate trip (1000km)</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-stops')" id="${id}-stops-td"><span>0</span><input type="number" id="${id}-stops" class="hidden-input" value="0"></td>
+        <td onclick="toggleInput('${id}-speed')" id="${id}-speed-td"><span>0</span><input type="number" id="${id}-speed" class="hidden-input" value="0"></td>
+        <td onclick="toggleInput('${id}-energy')" id="${id}-energy-td"><span>Normal</span><select id="${id}-energy" class="hidden-input">
+            <option value="normal">Normal</option>
+            <option value="25">25% more efficient</option>
+            <option value="50">50% more efficient</option>
+            <option value="custom">Custom</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-occupancy')" id="${id}-occupancy-td"><span>Typical</span><select id="${id}-occupancy" class="hidden-input">
+            <option value="all-seats-occupied">All seats occupied</option>
+            <option value="full">Full</option>
+            <option value="commuting">Commuting</option>
+            <option value="typical">Typical</option>
+            <option value="low-occupancy">Low occupancy</option>
+            <option value="custom">Custom</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-percentGreenEnergy')" id="${id}-percentGreenEnergy-td"><span>0</span><input type="number" id="${id}-percentGreenEnergy" class="hidden-input" value="0"></td>
+        <td onclick="toggleInput('${id}-energyRecoveryFactor')" id="${id}-energyRecoveryFactor-td"><span>Normal</span><select id="${id}-energyRecoveryFactor" class="hidden-input">
+            <option value="normal">Normal</option>
+            <option value="none">None</option>
+            <option value="low">Low</option>
+            <option value="very-good">Very good</option>
+            <option value="excellent">Excellent</option>
+        </select></td>
+        <td onclick="toggleInput('${id}-dragFactor')" id="${id}-dragFactor-td"><span>0</span><input type="number" id="${id}-dragFactor" class="hidden-input" value="0"></td>
+    `;
         tableBody.appendChild(row);
 
         const inputs = row.querySelectorAll('input, select');
@@ -293,12 +289,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const span = document.querySelector(`#${input.id}-td span`);
                 span.innerText = input.tagName === 'SELECT' ? input.options[input.selectedIndex].text : input.value;
                 calculateDetailedPublicTransportEmissions(id);
+                updateTotalEmissions();
             });
         });
     }
+
     function removePublicTransport(id) {
         const row = document.querySelector(`#${id}-ghgs`).closest('tr');
         row.remove();
+        updateTotalEmissions();
     }
 
     function calculateDetailedPublicTransportEmissions(id) {
@@ -362,28 +361,19 @@ document.addEventListener("DOMContentLoaded", function () {
             energyRecovery = 0.7;
         }
 
-        const annualDistance = 52 * trips * distance; // 연간 거리 계산
-        const aerodynamicDrag = transport.ptaero * (dragFactor + stops * (transport.ptmass / transport.ptpassno) / Math.pow(transport.ptaero, 0.5)); // 공기 역학 항력 계산
-        const lightEnergyUsage = transport.ptlight * transport.ptmass / 1000 * 3.6 / (speed * 0.7); // 조명 에너지 사용량 계산
-        const handC = transport.pthandc * transport.ptmass * (1.5 * 2 * (transport.ptaero / 3 + 3) * 0.8 + 8 * 0.25 * 2 * (transport.ptaero / 3 + 3) * 0.8 + transport.ptaero * 1.23 / 3.6) * 3.6 / 1000 / (speed * 0.8); // 난방 및 냉방 에너지 사용량 계산
+        const annualDistance = 52 * trips * distance;
+        const aerodynamicDrag = transport.ptaero * (dragFactor + stops * (transport.ptmass / transport.ptpassno) / Math.pow(transport.ptaero, 0.5));
+        const lightEnergyUsage = transport.ptlight * transport.ptmass / 1000 * 3.6 / (speed * 0.7);
+        const handC = transport.pthandc * transport.ptmass * (1.5 * 2 * (transport.ptaero / 3 + 3) * 0.8 + 8 * 0.25 * 2 * (transport.ptaero / 3 + 3) * 0.8 + transport.ptaero * 1.23 / 3.6) * 3.6 / 1000 / (speed * 0.8);
 
-        const energyPerVehicleKM = (1 - percentGreenEnergy / 100) * ((1 / energyPerKM / 10 / (1 - energyRecovery) * ((transport.ptmass + occupancyFactor * 67) * 9.81 * transport.ptCroll + 1 / 2 * 1.225 * aerodynamicDrag * Math.pow((speed / 3.6), 2) + 1 / 2 * (transport.ptmass + occupancyFactor * 67) * Math.pow((speed / 3.6), 2) / stops) + (lightEnergyUsage + handC) / 3.6 * 100) / 100 * 3.6); // 차량 km당 에너지 사용량 계산
+        const energyPerVehicleKM = (1 - percentGreenEnergy / 100) * ((1 / energyPerKM / 10 / (1 - energyRecovery) * ((transport.ptmass + occupancyFactor * 67) * 9.81 * transport.ptCroll + 1 / 2 * 1.225 * aerodynamicDrag * Math.pow((speed / 3.6), 2) + 1 / 2 * (transport.ptmass + occupancyFactor * 67) * Math.pow((speed / 3.6), 2) / stops) + (lightEnergyUsage + handC) / 3.6 * 100) / 100 * 3.6);
 
         const ptpassghg = energyPerVehicleKM / transport.ptpassno;
         const annualGHG = annualDistance * energyPerVehicleKM / transport.ptpassno * transport.ptghfact;
-        /*     
-        if(occupancyCalOption === "Absolute") {
-        ghg = tempTransportObject.get_ptannghgs;
-        }
-        else{
-        ghg = tempTransportObject.get_ptghgs;
-        }
-        
-        return ghg; 
-        */
-        const ptghgs = ptpassghg * transport.ptpassno * annualDistance / 100000; // 제공된 코드와 동일하게 연간 GHG 계산
 
-        document.getElementById(`${id}-ghgs`).innerText = isNaN([ptghgs]) ? "0.00 kg CO2-eq/year" : ptghgs.toFixed(2) + " kg CO2-eq/year";
+        const ptghgs = ptpassghg * transport.ptpassno * annualDistance / 100000;
+
+        document.getElementById(`${id}-ghgs`).innerText = isNaN(ptghgs) ? "0.00 kg CO2-eq/year" : ptghgs.toFixed(2) + " kg CO2-eq/year";
     }
 
     function openTab(evt, tabName) {
@@ -399,7 +389,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+        if (evt) evt.currentTarget.className += " active";
+
+        // Resetting the subtabs visibility
+        if (tabName === 'Detailed') {
+            toggleOption('cars-detail');
+        } else if (tabName === 'Quick') {
+            toggleOption('cars');
+        }
     }
 
     function toggleOption(option) {
@@ -440,7 +437,32 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (id.startsWith('P')) {
                 calculateDetailedPublicTransportEmissions(id.split('-')[0]);
             }
+            updateTotalEmissions();
         });
+    }
+
+    function updateTotalEmissions() {
+        let totalEmissions = 0;
+        const ghgCells = document.querySelectorAll('.ghg-cell');
+        ghgCells.forEach(cell => {
+            totalEmissions += parseFloat(cell.innerText);
+        });
+        document.getElementById("total-emissions").innerText = totalEmissions.toFixed(2);
+        updateghg1bar(totalEmissions); // Update the GHG bar with the calculated emissions
+    }
+
+    // Function to update the green bar based on the totalAirGHG value
+    function updateghg1bar(value) {
+        const ghg1bar = document.getElementById("ghg1bar");
+        const bartooltip = document.getElementById("bartooltip");
+
+        if (!isNaN(value)) {
+            const percentage = (value / 10000) * 100;
+            const limitedPercentage = Math.min(percentage, 100);
+
+            ghg1bar.style.width = limitedPercentage + "%"; // Update the width of the green bar
+            bartooltip.textContent = value.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
+        }
     }
 
     window.addCar = addCar;
@@ -453,7 +475,10 @@ document.addEventListener("DOMContentLoaded", function () {
     window.toggleOption = toggleOption;
     window.toggleInput = toggleInput;
 
+    // Initialize the default view
+    document.getElementById("Quick").style.display = "block";
     document.querySelector(".tablinks").click();
-    addCar(); // Add initial car row for detailed tab
-    addPublicTransport(); // Add initial public transport row for detailed tab
+
+    addCar();
+    addPublicTransport();
 });
