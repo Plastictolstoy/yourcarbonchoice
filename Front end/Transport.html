@@ -90,52 +90,116 @@
                 <div>
                     </br>
                     </br>
-                    <div class="option-group cars">
-                        <label>What type of light do you have most of?</label>
-                        <select>
-                            <option>Light car</option>
-                            <option>Small car</option>
-                            <option>Medium car</option>
-                            <option>Large car</option>
-                            <option>Very large car</option>
-                            <option>People Mover</option>
-                            <option>Small 4WD</option>
-                            <option>Medium 4WD</option>
-                            <option>Large 4WD</option>
-                            <option>Van</option>
-                            <option>Utility (6 cyl)</option>
-                            <option>Utility (8 cyl)</option>
-                            <option>Light truck</option>
-                            <option>Motor scooter</option>
-                            <option>Motorcycle</option>
-                            <option>Electric bike</option>
+                    <div id="cars" class="option-group cars">
+                        <label>What type of car do you have?</label>
+                        <select id="car-type">
+                            <option value="light-car">Light car</option>
+                            <option value="small-car">Small car</option>
+                            <option value="medium-car">Medium car</option>
+                            <option value="large-car">Large car</option>
+                            <option value="very-large-car">Very large car</option>
+                            <option value="people-mover">People Mover</option>
+                            <option value="small-4wd">Small 4WD</option>
+                            <option value="medium-4wd">Medium 4WD</option>
+                            <option value="large-4wd">Large 4WD</option>
+                            <option value="van">Van</option>
+                            <option value="utility-6cyl">Utility (6 cyl)</option>
+                            <option value="utility-8cyl">Utility (8 cyl)</option>
+                            <option value="light-truck">Light truck</option>
+                            <option value="motor-scooter">Motor scooter</option>
+                            <option value="motorcycle">Motorcycle</option>
+                            <option value="electric-bike">Electric bike</option>
                         </select>
+                        <label for="vkms">Annual Kilometers Driven:</label>
+                        <input type="number" id="vkms" value="15000">
+                        <label for="fuel-type">Fuel Type:</label>
+                        <select id="fuel-type">
+                            <option value="petrol">Petrol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="lpg">LPG</option>
+                            <option value="cng">CNG</option>
+                            <option value="electric">Electric</option>
+                        </select>
+                        <label for="yearvm">Vehicle Manufacture Year:</label>
+                        <input type="number" id="yearvm" value="2000">
+                        <button id="calculate-car-button">Calculate Car Emissions</button>
                     </div>
 
-                    <div class="option-group public hidden"> <!--Public Transport part-->
+                    <div id="public" class="option-group public hidden">
                         <label>What type of public transport do you take most often?</label>
-                        <select>
-                            <option>Urban train (6 car)</option>
-                            <option>Double decker urban train (8 car)</option>
-                            <option>Under-ground urban train (4-6 car)</option>
-                            <option>Outer urban train (6 car)(up to 130km/h)</option>
-                            <option>Regional train (3 car)(up to 130km/h)</option>
-                            <option>High speed intercity train (130-200km/h)</option>
-                            <option>Very high speed train (200-300km/h)</option>
-                            <option>Suburban diesel train (2 car)</option>
-                            <option>Regional diesel train (2 car)(up to 150km/h)</option>
-                            <option>Interstate high speed diesel train (7 car)(130-200km/h)</option>
-                            <option>Old Melbourne tram</option>
-                            <option>Modern 64 seat tram</option>
-                            <option>Modern 94 seat light rail or tram</option>
-                            <option>Suburban bus</option>
-                            <option>Intercity bus</option>
+                        <select id="public-transport-type">
+                            <option value="urban-train-6car">Urban train (6 car)</option>
+                            <option value="double-decker-urban-train-8car">Double decker urban train (8 car)</option>
+                            <option value="underground-urban-train-4-6car">Under-ground urban train (4-6 car)</option>
+                            <option value="outer-urban-train-6car">Outer urban train (6 car)(up to 130km/h)</option>
+                            <option value="regional-train-3car">Regional train (3 car)(up to 130km/h)</option>
+                            <option value="high-speed-intercity-train-130-200kmh">High speed intercity train
+                                (130-200km/h)</option>
+                            <option value="very-high-speed-train-200-300kmh">Very high speed train (200-300km/h)
+                            </option>
+                            <option value="suburban-diesel-train-2car">Suburban diesel train (2 car)</option>
+                            <option value="regional-diesel-train-2car">Regional diesel train (2 car)(up to 150km/h)
+                            </option>
+                            <option value="interstate-high-speed-diesel-train-7car">Interstate high speed diesel train
+                                (7 car)(130-200km/h)</option>
+                            <option value="old-melbourne-tram">Old Melbourne tram</option>
+                            <option value="modern-64seat-tram">Modern 64 seat tram</option>
+                            <option value="modern-94seat-light-rail-or-tram">Modern 94 seat light rail or tram</option>
+                            <option value="suburban-bus">Suburban bus</option>
+                            <option value="intercity-bus">Intercity bus</option>
                         </select>
+                        <label for="trip-distance">Typical Trip Distance (km):</label>
+                        <input type="number" id="trip-distance" value="20">
+                        <label for="trips-per-week">Number of Trips per Week:</label>
+                        <input type="number" id="trips-per-week" value="10">
+                        <button id="calculate-public-button">Calculate Public Transport Emissions</button>
                     </div>
                 </div>
-                <div class="calculator-buttons">
-                    <button>Quick</button>
-                    <button>Detail</button>
+            </div>
+            <div id="Detailed" class="tabcontent">
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>GHGs</th>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Vehicle Kilometers</th>
+                                <th>Year of Manufacture</th>
+                                <th>Servicing Program</th>
+                                <th>AC Installed</th>
+                                <th>Fuel Type</th>
+                                <th>Other Variables</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cars-table-body"></tbody>
+                    </table>
+                    <button onclick="addCar()">Add a car</button>
+                </div>
+
+                <div id="public-detail" class="table-container hidden">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>GHGs</th>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Trips per Week</th>
+                                <th>Trip Distance</th>
+                                <th>Stop Distance</th>
+                                <th>Operating Speed</th>
+                                <th>Energy Per KM</th>
+                                <th>Occupancy</th>
+                                <th>Percent Green Energy</th>
+                                <th>Energy Recovery Factor</th>
+                                <th>Drag Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="public-table-body"></tbody>
+                    </table>
+                    <button onclick="addPublicTransport()">Add Public Transport</button>
                 </div>
             </div>
         </section>
@@ -148,6 +212,7 @@
     </main>
 
     <!-- External Scripts -->
+    <script src="transport_module.js"></script>
     <script src="../Backend/openinfo.js"></script> <!-- Script for info box functionality -->
 
 </body>
