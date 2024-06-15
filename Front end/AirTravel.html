@@ -6,6 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
     <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
+    <style>
+        /* General styling */
+
+        /* Table css */
+        .table-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .ghg-cell {
+            background-color: green;
+            color: white;
+        }
+
+        .hidden-input {
+            display: none;
+        }
+
+        /* Styling for drop-downs and labels */
+        .flight-type {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .dropdown-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-container label {
+            margin-right: 10px;
+            min-width: 150px;
+        }
+
+        .dropdown-container select {
+            margin-right: 20px;
+        }
+
+        .quick-calculation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        /* gauge in quick */
+        #emission-gauge {
+            width: 100%;
+            height: 30px;
+        }
+
+        #emission-gauge:hover::after {
+            content: attr(title);
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        </style>
 </head>
 
 <body>
@@ -13,7 +91,6 @@
         <h1><a href="index.html">YourCarbonChoice</a></h1>
     </header>
     <main>
-        <!-- Navigation Section Start -->
         <nav>
             <a href="Transport.html"><button>Transport <img src="images/transport.png"
                         alt="Transport Icon"></button></a>
@@ -70,77 +147,102 @@
                 </div>
             </div>
             <div class="ghg-total">
-                <div id="totalGHG" class="ghg-number">0.00</div> <!-- GHG 값 표시 부분 -->
-                <span class="ghg">Tonnes GHG</span> <!-- 단위 표시 -->
+                <div id="total-emissions" class="ghg-number">0.00</div>
+                <span class="ghg">Tonnes GHG</span>
             </div>
         </section>
         <section id="calculator">
-            <div id="calculator-options">
-                <div class="module-info">
-                    <div class="module-type">Air Travel</div>
-                    <div class="module-details">
-                        <img src="Assets/airplane.png" alt="Air Travel" style="width: 100px; height: 100px;">
-                        <div class="ghg-number">0.00t</div>
+            <div class="calculator-buttons">
+                <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
+            </div>
+            <div id="Quick" class="tabcontent">
+                <div id="calculator-options">
+                    <div class="module-info">
+                        <h2>Air Travel</h2>
+                        <div class="module-details">
+                            <img src="Assets/airplane.png" alt="Air Travel" style="width: 100px; height: 100px;">
+                            <div class="ghg-number">0.00t</div>
+                        </div>
+                    </div>
+                    <div>
+                        </br>
+                        <h4>How many of the following types of flights does your household take each year?</h4>
+                        <p>Select the types of flights taken by each person.</p>
+                        </br>
+                        </br>
+                        <div class="option-group">
+                            <label>Melbourne - Sydney, Sydney - Brisbane or Melbourne - Adelaide</label>
+                            <select id="typicalDomestic">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label>Sydney - Perth</label>
+                            <select id="sydneyPerth">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label>Typical flight from Australia to Asia</label>
+                            <select id="typicalAusAsia">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label>Typical flight from Australia to USA or Europe</label>
+                            <select id="typicalAusUsaEurope">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h4>How many of the following types of flights does your household take each year?</h4>
-                    <p>Select the types of flights taken by each person.</p>
-                    </br>
-                    </br>
-                    <div class="option-group">
-                        <label>Melbourne - Sydney, Sydney - Brisbane or Melbourne - Adelaide</label>
-                        <select>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Sydney - Perth</label>
-                        <select>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Typical flight from Australia to Asia</label>
-                        <select>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-
-                    <div class="option-group">
-                        <label>Typical flight from Australia to USA or Europe</label>
-                        <select>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <!-- Repeat for other flight options -->
+            </div>
+            <div id="Detailed" class="tabcontent">
+                <h2>Detailed Calculation</h2>
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>GHGs</th>
+                                <th>ID</th>
+                                <th>Trips</th>
+                                <th>Distance</th>
+                                <th>Seat Type</th>
+                                <th>AirCraft Type</th>
+                                <th>Landing Take Off</th>
+                                <th>Stop Overs</th>
+                                <th>Warming Factor</th>
+                                <th>Occupancy</th>
+                                <th>LTO Distance</th>
+                                <th>Loading Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="flight-table-body"></tbody>
+                    </table>
                 </div>
-                <div class="calculator-buttons">
-                    <button>Quick</button>
-                    <button>Detail</button>
-                </div>
+                <button onclick="addFlight()">Add a Flight</button>
             </div>
         </section>
         <div class="main-footer-buttons">
@@ -152,7 +254,8 @@
     </main>
 
     <!-- External Scripts -->
-    <script src="../Backend/openinfo.js"></script> <!-- Script for info box functionality -->
+    <script src="../Backend/openinfo.js"></script>
+    <script src="../Backend/AirTravel module"></script>
 
 </body>
 <footer>
