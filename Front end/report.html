@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Greenhouse Calculator Report</title>
+    <link rel="stylesheet" href="report.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="images/YourCarbonChoice-logo.png" alt="YourCarbonChoice Logo">
+            <h1>Report</h1>
+        </div>
+    </header>
+    <div class="top-nav">
+        <a id="greenhouse-link" href="#greenhouse">Greenhouse</a>
+        <a id="energy-cost-link" href="#energy-cost">Energy Cost</a>
+        <a id="table-report-link" href="#table-report">Table Report</a>
+    </div>
+    <div class="export-controls">
+        <button id="exportButton">Export as PDF</button>
+    </div>
+    <div id="chart-container">
+        <canvas id="ghgChart" width="400" height="200"></canvas>
+    </div>
+
+   
+    <div style="display: none;">
+        <div id="totalAirGHG">100</div>
+        <div id="totalTransport">200</div>
+        <div id="totalClothesDryerGHG">150</div>
+        <div id="totalGHG">450</div>
+    </div>
+
+    <footer class="module-icons">
+        <img src="images/transport.png" alt="Transport">
+        <img src="images/airplane.png" alt="Air Travel">
+        <img src="images/heating.png" alt="Heating">
+        <img src="images/hotwater.png" alt="Hot Water">
+        <img src="images/clothes.svg" alt="Clothes">
+        <img src="images/lighting.png" alt="Lighting">
+        <img src="images/refrigerator.svg" alt="Refrigeration">
+        <img src="images/cooking.svg" alt="Cooking">
+        <img src="images/Appliance.svg" alt=" Appliances">
+        <img src="images/foodshopping.png" alt="Food Shopping">
+        <img src="images/waste.png" alt="Waste">
+    </footer>
+    <script src="Back End/global.js"></script>
+    <script src="Back End/AirTravelModule.js"></script>
+    <script src="Back End/publicTransModule.js"></script>
+    <script src="Back End/report.js"></script>
+</body>
+</html>

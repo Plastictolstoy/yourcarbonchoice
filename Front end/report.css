@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.active {
+    background-color: orange !important; 
+}
+
+.site-header {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    background-color:rgba(250, 239, 224, 0.75);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+}
+
+.site-header img {
+    height: 120px; /* Adjust this as needed */
+}
+
+.site-header h1 {
+    margin: 0; /* Removes default margin from h1 for tighter spacing */
+    color: #333; /* Adjust the color to fit your design */
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Changes for vertical layout */
+    width: 100%;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: center; /* Center the links horizontally */
+    background-color: #f4f4f4;
+    padding: 10px 0;
+}
+
+.top-nav a {
+    background-color: #45a049; /* Slightly darker green on hover */
+    padding: 10px 20px; /* Consistent padding */
+    margin: 0 10px; /* Even spacing */
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1; /* Makes all links equal width */
+    text-align: center; /* Centers text within each link */
+    box-sizing: border-box; /* Includes padding and border in the width */
+}
+
+.top-nav a:hover, .top-nav a.active {
+    background-color: #45a049; 
+}
+.export-controls {
+    display: flex;
+    justify-content: flex-end; /* Aligns the child element(s) to the right */
+    padding: 10px; /* Adjust padding as necessary */
+    margin-top: 10px; /* Optional: adds space above the export controls */
+}
+
+#exportButton {
+    padding: 8px 16px; /* Gives the button some size and makes it easier to click */
+    background-color: #4CAF50; /* A pleasant green color, adjust as needed */
+    color: white; /* Text color */
+    border: none; /* Removes the default border */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    border-radius: 4px; /* Optional: Rounds the corners for a smoother look */
+}
+
+#exportButton:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: white;
+}
+
+#chart-container {
+    margin-bottom: 20px;
+}
+
+footer.module-icons {
+    display: flex;
+    justify-content: space-around;
+    background-color: #9bcb3c;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer.module-icons img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+footer.module-icons img:hover {
+    transform: scale(1.1);
+}
