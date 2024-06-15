@@ -10,12 +10,27 @@ body {
     /* 세로 방향으로 요소 정렬 */
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
 /* Header */
 header {
+    font-family: 'PP Neue Montreal', sans-serif;
     background-color: #FAEFE0BF;
     color: #121212de;
     padding: 20px;
     text-align: left;
+}
+
+header h1 a {
+    color: #121212; /* Dark grey text color, consistent with header */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s, text-decoration-color 0.3s; /* Smooth transition for color and underline color */
 }
 
 /* Main Content Area */
@@ -179,12 +194,20 @@ nav button:hover {
 
 .addButton,
 #infoButton {
-    flex: 0 0 auto;
-    /* Prevent the buttons from growing */
-    width: 35px;
-    /* Set a fixed width for the buttons */
-    height: 20px;
-    /* Set a fixed height for the buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 35px;
+    flex-direction: row;
+    color: #000;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    background: rgba(47, 126, 45, 0.50);
+    border: none;
+    cursor: pointer;
 }
 
 .green-line {
@@ -209,10 +232,32 @@ nav button:hover {
     margin-bottom: 5px;
 }
 
+.ghg-display span {
+    color: #000;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .ghg-bar {
     height: 10px;
     flex: 3;
     margin-left: 10px;
+}
+
+.ghg-total .ghg {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(47, 126, 45, 0.80);
+    font-family: "PP Neue Montreal", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .my-ghg {
@@ -336,8 +381,13 @@ select {
 }
 
 .ghg-number {
+    color: rgba(47, 126, 45, 0.80);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "PP Neue Montreal";
     font-size: 60px;
-    color: #4CAF50;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .ghg {
