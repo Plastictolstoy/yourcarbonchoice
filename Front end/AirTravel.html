@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourCarbonChoice</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css"> <!-- 모든 스타일을 외부 CSS 파일로 이동 -->
     <style>
         /* Layout styling */
         .quick-calculation {
@@ -25,9 +25,8 @@
         }
 
         .dropdown-wrapper {
-            margin-top: 0px;
-	        margin-left: 300px;
-	        margin-right: 90px;
+            margin-top: -20px;
+            /* Adjust this value to move the dropdown containers higher */
         }
 
         .dropdown-container {
@@ -147,14 +146,13 @@
         <section id="calculator">
             <div class="calculator-buttons">
                 <button class="tablinks" onclick="openTab(event, 'Quick')">Quick</button>
-                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detailed</button>
+                <button class="tablinks" onclick="openTab(event, 'Detailed')">Detail</button>
             </div>
             <div id="Quick" class="tabcontent">
                 <h2>Air Travel</h2>
                 <div class="quick-calculation">
                     <div class="item">
-                        <img src="Assets/airplane.png" alt="Airtravel Logo ">
-                        
+                        <img src="Assets/airplane.png" alt="Clothes Dryer">
                         <div class="dropdown-wrapper">
                             <div class="dropdown-container">
                                 <h3>How many of the following types of flights does your household take each year?</h3>
