@@ -1,4 +1,7 @@
         /* Main Menu Styles */
+        body {
+            background-color: #FAEFE0; 
+        }
         .header {
             width: 100%; 
             background-color: #FAEFE0BF; 
@@ -34,6 +37,7 @@
         .main-menu h2 {
             text-align: left;
             font-size: 24px;
+            
     
         }
 
@@ -90,7 +94,7 @@
         }
 
         .input-group {
-            margin: 20px 0;
+            margin: 0px 0;
         }
 
         .input-group label {
@@ -273,6 +277,7 @@
             margin: 0 auto;
             padding: 20px;
             text-align: left;
+            background-color: #FAEFE0BF;
         }
 
         .main-menu h2 {
@@ -292,7 +297,6 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
-            margin-left: 80px;
             /* Add margin to the left */
         }
 
@@ -301,7 +305,7 @@
             justify-content: space-between;
             width: 320px;
             /* Adjusted width */
-            padding-left: 80px;
+            
             /* Add padding to the left */
         }
 
