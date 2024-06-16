@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Australian Greenhouse Calculator Report</title>
     <link rel="stylesheet" href="report.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
     <header class="site-header">
         <div class="logo-container">
-            <img src="images/YourCarbonChoice-logo.png" alt="YourCarbonChoice Logo">
+            <a href="index.html">
+                <img src="images/YourCarbonChoice-logo.png" alt="YourCarbonChoice Logo">
+            </a>
+            
             <h1>Report</h1>
         </div>
     </header>
@@ -26,31 +29,34 @@
     <div id="chart-container">
         <canvas id="ghgChart" width="400" height="200"></canvas>
     </div>
-
-   
+    
+    <!-- Hidden elements for data storage -->
     <div style="display: none;">
         <div id="totalAirGHG">100</div>
         <div id="totalTransport">200</div>
         <div id="totalClothesDryerGHG">150</div>
-        <div id="totalGHG">450</div>
+        <div id="totalLightingGHG">300</div> 
     </div>
 
     <footer class="module-icons">
-        <img src="images/transport.png" alt="Transport">
-        <img src="images/airplane.png" alt="Air Travel">
-        <img src="images/heating.png" alt="Heating">
-        <img src="images/hotwater.png" alt="Hot Water">
-        <img src="images/clothes.svg" alt="Clothes">
-        <img src="images/lighting.png" alt="Lighting">
-        <img src="images/refrigerator.svg" alt="Refrigeration">
-        <img src="images/cooking.svg" alt="Cooking">
-        <img src="images/Appliance.svg" alt=" Appliances">
-        <img src="images/foodshopping.png" alt="Food Shopping">
-        <img src="images/waste.png" alt="Waste">
+        <a href="Transport.html"><img src="images/transport.png" alt="Transport"></a>
+        <a href="AirTravel.html"><img src="images/airplane.png" alt="Air Travel"></a>
+        <a href="Heating & Cooling.html"><img src="images/heating.png" alt="Heating"></a>
+        <a href="Hot water.html"><img src="images/hotwater.png" alt="Hot Water"></a>
+        <a href="Clothes_Dryer.html"><img src="images/clothes.svg" alt="Clothes Dryer"></a>
+        <a href="Lighting.html"><img src="images/lighting.png" alt="Lighting"></a>
+        <a href="Refrigerator.html"><img src="images/refrigerator.svg" alt="Refrigerator"></a>
+        <a href="Cooking.html"><img src="images/cooking.svg" alt="Cooking"></a>
+        <a href="Appliances.html"><img src="images/Appliance.svg" alt="Appliances"></a>
+        <a href="Food & Shopping.html"><img src="images/foodshopping.png" alt="Food Shopping"></a>
+        <a href="Waste.html"><img src="images/waste.png" alt="Waste"></a>
     </footer>
-    <script src="Back End/global.js"></script>
-    <script src="Back End/AirTravelModule.js"></script>
-    <script src="Back End/publicTransModule.js"></script>
-    <script src="Back End/report.js"></script>
+
+    <script src="../Backend/report.js"></script>
+    <script src="../Backend/openinfo.js"></script>
+    <script src="../Backend/Transport module.js"></script>
+    <script src="../Backend/AirTravel module.js"></script>
+    <script src="../Backend/Clothes module.js"></script>
+    <script src="../Backend/Lighting module.js"></script>
 </body>
 </html>

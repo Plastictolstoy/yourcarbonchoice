@@ -464,6 +464,16 @@ document.addEventListener("DOMContentLoaded", function () {
             bartooltip.textContent = value.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
         }
     }
+    function updateTransportEmissions() {
+        // Calculate transport emissions (example calculation, replace with actual logic)
+        var emissions = calculateTransportEmissions(); // You need to define or replace this function
+        GlobalEmissionsData.transport = emissions; // Update the global data store
+        updateMainChart(); // Refresh the chart with updated data
+    }
+    
+
+    
+    
 
     window.addCar = addCar;
     window.removeCar = removeCar;

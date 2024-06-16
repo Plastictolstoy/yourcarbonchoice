@@ -183,3 +183,9 @@ function updateghg1bar() {
         bartooltip.textContent = totalEmissions.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
     }
 }
+function updateLightingEmissions() {
+    // Calculate lighting emissions (example calculation, replace with actual logic)
+    var emissions = calculateLightingEmissions(); // You need to define or replace this function
+    GlobalEmissionsData.lighting = emissions; // Update the global data store
+    updateMainChart(); // Refresh the chart with updated data
+}

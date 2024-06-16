@@ -319,6 +319,12 @@ function totalAirTravelGHG() {
 
     updateghg1bar(); // Update the green bar based on the total emissions value
 }
+function updateAirTravelEmissions() {
+    // Calculate air travel emissions (example calculation, replace with actual logic)
+    var emissions = calculateAirTravelEmissions(); // You need to define or replace this function
+    GlobalEmissionsData.airTravel = emissions; // Update the global data store
+    updateMainChart(); // Refresh the chart with updated data
+}
 
 // Function to update the green bar based on the totalAirGHG value
 function updateghg1bar() {
@@ -433,3 +439,5 @@ document.querySelectorAll('#flight-table-body input, #flight-table-body select')
         calculateDetailedGHG(rowId);
     });
 });
+
+

@@ -93,8 +93,17 @@ main {
 }
 
 #chart-container {
-    margin-bottom: 20px;
+    height: 600px;
+    width: 900px;
+    margin: 0 auto; 
 }
+
+#ghgChart {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto 800 / 400; /* Maintains aspect ratio */
+}
+
 
 footer.module-icons {
     display: flex;

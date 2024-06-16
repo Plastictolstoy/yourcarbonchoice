@@ -227,6 +227,12 @@ function updateghg1bar() {
         bartooltip.textContent = totalEmissions.toFixed(2) + " kg CO2-eq/year"; // Update the bartooltip content with the actual value
     }
 }
+function updateClothesDryerEmissions() {
+    // Calculate clothes dryer emissions (example calculation, replace with actual logic)
+    var emissions = calculateClothesDryerEmissions(); // You need to define or replace this function
+    GlobalEmissionsData.clothesDryer = emissions; // Update the global data store
+    updateMainChart(); // Refresh the chart with updated data
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners for quick tab

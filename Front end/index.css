@@ -27,7 +27,6 @@ body {
 
 /*  styling to control width and padding */
 .headerLogo {
-    width: 90%;
     margin: 0 auto;
     text-align: center;
    
@@ -35,20 +34,23 @@ body {
 
 /* Header styling */
 .site-header {
-    background-color: #FAEFE0BF; 
-    border-bottom: 1px solid #ddd; 
+    display: flex; 
     justify-content: center;
     align-items: center;
+    background-color: #FAEFE0BF;
+    border-bottom: 4px solid black; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    
+    padding: 10px 0;
 }
 
 /* Logo styling */
 .logo {
-    height: 270px;
-    width:100%; 
+    width: auto;
+    height: 15vw; 
+    max-height: 250px; 
+    min-height: 50px; 
 }
-
 /* home page image styling */
 
 .homepage {
